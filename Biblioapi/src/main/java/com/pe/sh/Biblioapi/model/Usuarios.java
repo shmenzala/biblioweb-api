@@ -109,14 +109,6 @@ public class Usuarios implements Serializable{
         this.personas_perfil = personas_perfil;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public Set<Roles> getRoles() {
         return roles;
     }
