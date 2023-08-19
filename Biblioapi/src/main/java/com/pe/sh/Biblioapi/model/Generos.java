@@ -6,9 +6,13 @@ package com.pe.sh.Biblioapi.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -24,6 +28,9 @@ public class Generos implements Serializable{
     
     @Column(name = "nombre")
     private String nombre;
+    
+    @ManyToMany(mappedBy = "generos", fetch = FetchType.LAZY)
+    private Set<Libros> libros = new HashSet<>();
     
     public Generos() {
     }
@@ -47,6 +54,14 @@ public class Generos implements Serializable{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Set<Libros> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(Set<Libros> libros) {
+        this.libros = libros;
     }
     
 }

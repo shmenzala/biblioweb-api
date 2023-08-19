@@ -4,11 +4,20 @@
  */
 package com.pe.sh.Biblioapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -31,8 +40,23 @@ public class Usuarios implements Serializable{
     @Column(name = "password")
     private String password;
     
-    @Column(name = "codigope")
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "codigope")
     private Personas_perfil personas_perfil;
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonBackReference
+    @JoinTable(name = "USUARIOS_ROLES",
+            joinColumns = @JoinColumn(name = "codigous", referencedColumnName = "codigous"),
+            inverseJoinColumns = @JoinColumn(name = "codigorol", referencedColumnName = "codigorol"))
+    private Set<Roles> roles =  new HashSet<>();
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonBackReference
+    @JoinTable(name = "FAVORITOS_LIBPER",
+            joinColumns = @JoinColumn(name = "codigous", referencedColumnName = "codigous"),
+            inverseJoinColumns = @JoinColumn(name = "codigolib", referencedColumnName = "codigolib"))
+    private Set<Libros> libros = new HashSet<>();
 
     public Usuarios() {
     }
@@ -84,5 +108,29 @@ public class Usuarios implements Serializable{
     public void setPersonas_perfil(Personas_perfil personas_perfil) {
         this.personas_perfil = personas_perfil;
     }
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Set<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
+    }
+
+    public Set<Libros> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(Set<Libros> libros) {
+        this.libros = libros;
+    }
+
 }

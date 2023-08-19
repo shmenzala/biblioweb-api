@@ -4,11 +4,16 @@
  */
 package com.pe.sh.Biblioapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -24,6 +29,10 @@ public class Editoriales implements Serializable{
     
     @Column(name = "nombre")
     private String nombre;
+    
+    @JsonBackReference
+    @OneToMany(mappedBy = "editorial", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Libros> libros = new HashSet<>();
 
     public Editoriales() {
     }
@@ -47,6 +56,22 @@ public class Editoriales implements Serializable{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Set<Libros> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(Set<Libros> libros) {
+        this.libros = libros;
     }
     
 }

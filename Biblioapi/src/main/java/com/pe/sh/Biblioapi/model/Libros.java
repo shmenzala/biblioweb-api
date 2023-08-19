@@ -4,11 +4,20 @@
  */
 package com.pe.sh.Biblioapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -37,8 +46,26 @@ public class Libros implements Serializable{
     @Column(name = "paginas")
     private String paginas;
     
-    @Column(name = "codigoedi")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "codigoedi", nullable = false)
     private Editoriales editorial;
+    
+    @ManyToMany(mappedBy = "libros", fetch = FetchType.LAZY)
+    private Set<Usuarios> usuarios = new HashSet<>();
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonBackReference
+    @JoinTable(name = "LIBROS_AUTORES",
+            joinColumns = @JoinColumn(name = "codigolib", referencedColumnName = "codigolib"),
+            inverseJoinColumns = @JoinColumn(name = "codigoaut", referencedColumnName = "codigoaut"))
+    private Set<Autores> autores = new HashSet<>();
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonBackReference
+    @JoinTable(name = "LIBROS_GENEROS",
+            joinColumns = @JoinColumn(name = "codigolib", referencedColumnName = "codigolib"),
+            inverseJoinColumns = @JoinColumn(name = "codigogen", referencedColumnName = "codigogen"))
+    private Set<Generos> generos = new HashSet<>();
 
     public Libros() {
     }
@@ -107,6 +134,30 @@ public class Libros implements Serializable{
 
     public void setEditorial(Editoriales editorial) {
         this.editorial = editorial;
+    }
+
+    public Set<Usuarios> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<Usuarios> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public Set<Autores> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(Set<Autores> autores) {
+        this.autores = autores;
+    }
+
+    public Set<Generos> getGeneros() {
+        return generos;
+    }
+
+    public void setGeneros(Set<Generos> generos) {
+        this.generos = generos;
     }
     
     

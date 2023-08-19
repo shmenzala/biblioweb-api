@@ -6,9 +6,13 @@ package com.pe.sh.Biblioapi.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -36,6 +40,9 @@ public class Autores implements Serializable{
     
     @Column(name = "extra_info")
     private String extra_info;
+    
+    @ManyToMany(mappedBy = "autores", fetch = FetchType.LAZY)
+    private Set<Libros> libros = new HashSet<>();
 
     public Autores() {
     }
@@ -95,6 +102,14 @@ public class Autores implements Serializable{
 
     public void setExtra_info(String extra_info) {
         this.extra_info = extra_info;
+    }
+
+    public Set<Libros> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(Set<Libros> libros) {
+        this.libros = libros;
     }
     
 }
