@@ -1,5 +1,5 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  width="1026" height="729">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  width="995" height="733">
 <defs id="dmw_defs" >
 <svg id="fk_sym" viewBox="0 0 48.665 48.665" style="enable-background:new 0 0 48.665 48.665;" >
 <g>
@@ -22,93 +22,93 @@
 <path fill="black" d="M660.224 422.656c6.976 16.192-0.512 35.008-16.768 42.048-16.128 6.976-34.944-0.448-41.984-16.768-8.448-19.776-20.736-37.696-36.224-53.248-64.64-64.64-177.344-64.64-241.92 0l-145.216 145.28c-66.688 66.688-66.688 175.232 0 241.984 66.688 66.688 175.104 66.752 241.92 0l92.8-92.864c12.48-12.48 32.768-12.48 45.248 0s12.48 32.768 0 45.248l-92.8 92.864c-91.648 91.648-240.832 91.52-332.416 0-91.712-91.648-91.712-240.832 0-332.48l145.216-145.28c44.352-44.416 103.424-68.864 166.272-68.864s121.792 24.448 166.208 68.864c21.248 21.312 38.016 45.952 49.664 73.216zM891.136 401.344l-145.216 145.216c-88.768 88.832-243.712 88.832-332.416 0-21.312-21.312-38.080-45.952-49.728-73.216-7.040-16.256 0.448-35.072 16.704-42.048 16.064-6.784 35.008 0.512 41.984 16.768 8.512 19.776 20.8 37.696 36.288 53.248 64.64 64.64 177.344 64.64 241.92 0l145.216-145.216c66.688-66.688 66.688-175.232 0-241.984-66.752-66.624-175.168-66.688-241.92 0l-92.8 92.864c-12.48 12.48-32.768 12.48-45.248 0s-12.48-32.768 0-45.248l92.8-92.864c45.824-45.824 105.984-68.736 166.208-68.736s120.448 22.912 166.272 68.736c91.584 91.648 91.584 240.768-0.064 332.48z" />
 </g>
 </svg>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath2_0_">
-<rect x="0" y="0" width="270" height="151" />
-</clipPath>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath9_0_">
-<rect x="0" y="0" width="264" height="151" />
-</clipPath>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath11_0_">
-<rect x="0" y="0" width="227" height="157" />
-</clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath5_0_">
-<rect x="0" y="0" width="229" height="95" />
-</clipPath>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath12_0_">
-<rect x="0" y="0" width="263" height="129" />
-</clipPath>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath4_0_">
-<rect x="0" y="0" width="253" height="129" />
-</clipPath>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath7_0_">
-<rect x="0" y="0" width="267" height="129" />
-</clipPath>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath6_0_">
-<rect x="0" y="0" width="282" height="185" />
-</clipPath>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath8_0_">
-<rect x="0" y="0" width="269" height="129" />
-</clipPath>
-<clipPath clipPathUnits="userSpaceOnUse" id="clipPath3_0_">
-<rect x="0" y="0" width="230" height="95" />
+<rect x="0" y="0" width="229" height="97" />
 </clipPath>
 <clipPath clipPathUnits="userSpaceOnUse" id="clipPath10_0_">
-<rect x="0" y="0" width="228" height="95" />
+<rect x="0" y="0" width="228" height="97" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath12_0_">
+<rect x="0" y="0" width="263" height="131" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath4_0_">
+<rect x="0" y="0" width="253" height="131" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath11_0_">
+<rect x="0" y="0" width="227" height="187" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath7_0_">
+<rect x="0" y="0" width="267" height="131" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath8_0_">
+<rect x="0" y="0" width="269" height="131" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath2_0_">
+<rect x="0" y="0" width="270" height="153" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath9_0_">
+<rect x="0" y="0" width="264" height="153" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath3_0_">
+<rect x="0" y="0" width="230" height="97" />
+</clipPath>
+<clipPath clipPathUnits="userSpaceOnUse" id="clipPath6_0_">
+<rect x="0" y="0" width="282" height="187" />
 </clipPath>
 </defs>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M356 441 L270 441" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="356 441 350 444 350 438" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M270.0 435.0 L282.0 441.0 L270.0 447.0 M282.5999994277954 435.0 L282.5999994277954 447.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M518 531 L518 580" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="518 531 521 537 515 537" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M512.0 580.0 L518.0 568.0 L524.0 580.0 M512.0 567.4000005722046 L524.0 567.4000005722046" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M758 235 L634 235" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="758 235 752 238 752 232" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M634.0 229.0 L646.0 235.0 L634.0 241.0 M646.5999994277954 229.0 L646.5999994277954 241.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M660 495 L726 495" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="660 495 666 492 666 498" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M726.0 501.0 L714.0 495.0 L726.0 489.0 M713.4000005722046 501.0 L713.4000005722046 489.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M873 634 L873 594" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="873 634 870 628 876 628" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M879.0 594.0 L873.0 606.0 L867.0 594.0 M879.0 606.5999994277954 L867.0 606.5999994277954" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M274 232 L385 232" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="274 232 280 229 280 235" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M385.0 238.0 L373.0 232.0 L385.0 226.0 M372.4000005722046 238.0 L372.4000005722046 226.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M279 652 L363 652" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="279 652 285 649 285 655" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M363.0 658.0 L351.0 652.0 L363.0 646.0 M350.4000005722046 658.0 L350.4000005722046 646.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-dasharray="8,8" stroke-width="1" d="M727 391 L660 391" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="727 391 721 394 721 388" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M660.0 385.0 L672.0 391.0 L660.0 397.0 M672.5999994277954 385.0 L672.5999994277954 397.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M148 274 L148 377" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="148 274 151 280 145 280" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M142.0 377.0 L148.0 365.0 L154.0 377.0 M142.0 364.4000005722046 L154.0 364.4000005722046" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M729 233 L648 233" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="729 233 723 236 723 230" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M648.0 227.0 L660.0 233.0 L648.0 239.0 M660.5999994277954 227.0 L660.5999994277954 239.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-dasharray="8,8" stroke-width="1" d="M759 388 L638 388" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="759 388 753 391 753 385" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M638.0 382.0 L650.0 388.0 L638.0 394.0 M650.5999994277954 382.0 L650.5999994277954 394.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M378 436 L268 436" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="378 436 372 439 372 433" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M268.0 430.0 L280.0 436.0 L268.0 442.0 M280.5999994277954 430.0 L280.5999994277954 442.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M638 498 L757 498" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="638 498 644 495 644 501" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M757.0 504.0 L745.0 498.0 L757.0 492.0 M744.4000005722046 504.0 L744.4000005722046 492.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M843 636 L843 590" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="843 636 840 630 846 630" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M849.0 590.0 L843.0 602.0 L837.0 590.0 M849.0 602.5999994277954 L837.0 602.5999994277954" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M496 532 L496 588" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="496 532 499 538 493 538" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M490.0 588.0 L496.0 576.0 L502.0 588.0 M490.0 575.4000005722046 L502.0 575.4000005722046" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M287 645 L385 645" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="287 645 293 642 293 648" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M385.0 651.0 L373.0 645.0 L385.0 639.0 M372.4000005722046 651.0 L372.4000005722046 639.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M262 233 L371 233" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="262 233 268 230 268 236" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M371.0 239.0 L359.0 233.0 L371.0 227.0 M358.4000005722046 239.0 L358.4000005722046 227.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-width="1" d="M157 287 L157 371" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="157 287 160 293 154 293" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M151.0 371.0 L157.0 359.0 L163.0 371.0 M151.0 358.4000005722046 L163.0 358.4000005722046" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
 <g stroke-linecap="butt" >
-<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-dasharray="8,8" stroke-width="1" d="M372 140 L262 140" />
-<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="372 140 366 143 366 137" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
-<path stroke-dasharray="none" d="M262.0 134.0 L274.0 140.0 L262.0 146.0 M274.5999994277954 134.0 L274.5999994277954 146.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
+<path stroke="rgb(0,0,0)" fill="none" stroke-opacity="1.0"  stroke-dasharray="8,8" stroke-width="1" d="M384 132 L274 132" />
+<polygon stroke="rgb(0,0,0)" stroke-dasharray="none" points="384 132 378 135 378 129" fill="rgb(0,0,0)" stroke-width="1" stroke-opacity="1.0"  />
+<path stroke-dasharray="none" d="M280.0 126.0 L280.0 138.0 M285.3999996185303 126.0 L285.3999996185303 138.0" fill="white" stroke-width="1" stroke-opacity="1.0" stroke="rgb(0,0,0)" />
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath9_0_)" transform="translate(372,13)" >
-<rect x="0" y="0" width="263" height="150" />
-<text id="37E77C9B-19014AEABD96" x="52" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath9_0_)" transform="translate(384,12)" >
+<rect x="0" y="0" width="263" height="152" />
+<text id="AEAFB745-F8AB494F3094" x="52" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.PERSONAS_PERFIL
 </text>
 <line x1="0" y1="18" x2="262" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -182,9 +182,9 @@ U
 PK_CODIGOPE (CODIGOPE)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath4_0_)" transform="translate(17,377)" >
-<rect x="0" y="0" width="252" height="128" />
-<text id="71A94988-114FAA5F469D" x="46" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath4_0_)" transform="translate(15,371)" >
+<rect x="0" y="0" width="252" height="130" />
+<text id="76E74426-36A14E333A2F" x="46" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.FAVORITOS_LIBPER
 </text>
 <line x1="0" y1="18" x2="251" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -218,11 +218,11 @@ VARCHAR2 (10 BYTE)
 PK_CODIGOPELIB (CODIGOUS, CODIGOLIB)
 </text>
 <line x1="0" y1="72" x2="251" y2="72" fill="none" stroke="rgb(0,0,255)"/>
-<use xlink:href="#fk_sym" x="4" y="79" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#B5F10A83-9CAC85FBEEBD" >
+<use xlink:href="#fk_sym" x="4" y="79" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#D8D94169-0F5282952102" >
 <text x="16" y="86" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_PELIB_CODIGOLIB (CODIGOLIB)
 </text></a>
-<use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#483533A1-5B12B3EAEFEF" >
+<use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#78E3E074-250C08BC3265" >
 <text x="16" y="100" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_PELIB_CODIGOUS (CODIGOUS)
 </text></a>
@@ -234,9 +234,9 @@ U
 PK_CODIGOPELIB (CODIGOUS, CODIGOLIB)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath11_0_)" transform="translate(35,117)" >
-<rect x="0" y="0" width="226" height="156" />
-<text id="483533A1-5B12B3EAEFEF" x="57" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath11_0_)" transform="translate(47,100)" >
+<rect x="0" y="0" width="226" height="186" />
+<text id="78E3E074-250C08BC3265" x="57" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.USUARIOS
 </text>
 <line x1="0" y1="18" x2="225" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -282,8 +282,8 @@ VARCHAR2 (30 BYTE)
 <text x="16" y="88" fill="rgb(255,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 
 </text>
-<text x="2" y="88" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
-F
+<text x="2" y="88" fill="rgb(0,0,255)" fill-opacity="1.0" font-size="10" stroke="none">
+UF
 </text>
 <text x="26" y="88" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 CODIGOPE
@@ -296,22 +296,32 @@ VARCHAR2 (10 BYTE)
 <text x="16" y="108" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 PK_CODIGOUS (CODIGOUS)
 </text>
-<line x1="0" y1="114" x2="225" y2="114" fill="none" stroke="rgb(0,0,255)"/>
-<use xlink:href="#fk_sym" x="4" y="121" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#37E77C9B-19014AEABD96" >
-<text x="16" y="128" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
+<use xlink:href="#uk_sym" x="4" y="115" width="8" height="8" fill-opacity="1.0"/>
+<text x="16" y="122" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
+UK_CODIGOPE (CODIGOPE)
+</text>
+<line x1="0" y1="128" x2="225" y2="128" fill="none" stroke="rgb(0,0,255)"/>
+<use xlink:href="#fk_sym" x="4" y="135" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#AEAFB745-F8AB494F3094" >
+<text x="16" y="142" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_CODIGOPE (CODIGOPE)
 </text></a>
-<line x1="0" y1="134" x2="225" y2="134" fill="none" stroke="rgb(0,0,255)"/>
-<text x="2" y="148" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
+<line x1="0" y1="148" x2="225" y2="148" fill="none" stroke="rgb(0,0,255)"/>
+<text x="2" y="162" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 U
 </text>
-<text x="16" y="148" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
+<text x="16" y="162" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 PK_CODIGOUS (CODIGOUS)
 </text>
+<text x="2" y="176" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
+U
+</text>
+<text x="16" y="176" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
+UK_CODIGOPE (CODIGOPE)
+</text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath10_0_)" transform="translate(758,184)" >
-<rect x="0" y="0" width="227" height="94" />
-<text id="D5954AE3-E7646A3ACB21" x="66" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath10_0_)" transform="translate(729,185)" >
+<rect x="0" y="0" width="227" height="96" />
+<text id="53EE5D3A-8ADDAF36EB12" x="66" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.ROLES
 </text>
 <line x1="0" y1="18" x2="226" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -349,9 +359,9 @@ U
 PK_CODIGOROL (CODIGOROL)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath6_0_)" transform="translate(356,347)" >
-<rect x="0" y="0" width="281" height="184" />
-<text id="B5F10A83-9CAC85FBEEBD" x="92" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath6_0_)" transform="translate(378,344)" >
+<rect x="0" y="0" width="281" height="186" />
+<text id="D8D94169-0F5282952102" x="92" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.LIBROS
 </text>
 <line x1="0" y1="18" x2="280" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -430,7 +440,7 @@ VARCHAR2 (10 BYTE)
 PK_CODIGOLIB (CODIGOLIB)
 </text>
 <line x1="0" y1="142" x2="280" y2="142" fill="none" stroke="rgb(0,0,255)"/>
-<use xlink:href="#fk_sym" x="4" y="149" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#CB1FE901-16F0E2B78D80" >
+<use xlink:href="#fk_sym" x="4" y="149" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#B163DA17-7B8B009FE15F" >
 <text x="16" y="156" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_CODIGOEDI (CODIGOEDI)
 </text></a>
@@ -442,9 +452,9 @@ U
 PK_CODIGOLIB (CODIGOLIB)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath5_0_)" transform="translate(759,634)" >
-<rect x="0" y="0" width="228" height="94" />
-<text id="48F2C46C-479151AC80DD" x="59" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath5_0_)" transform="translate(729,636)" >
+<rect x="0" y="0" width="228" height="96" />
+<text id="0E35CEE6-98A36D87FA27" x="59" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.GENEROS
 </text>
 <line x1="0" y1="18" x2="227" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -482,9 +492,9 @@ U
 PK_CODIGOGEN (CODIGOGEN)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath7_0_)" transform="translate(363,588)" >
-<rect x="0" y="0" width="266" height="128" />
-<text id="9AF6E55E-AAAD735C4BD5" x="57" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath7_0_)" transform="translate(385,580)" >
+<rect x="0" y="0" width="266" height="130" />
+<text id="7D417C5F-9C28B180598A" x="57" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.LIBROS_AUTORES
 </text>
 <line x1="0" y1="18" x2="265" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -518,11 +528,11 @@ VARCHAR2 (10 BYTE)
 PK_CODIGOLIBAUT (CODIGOLIB, CODIGOAUT)
 </text>
 <line x1="0" y1="72" x2="265" y2="72" fill="none" stroke="rgb(0,0,255)"/>
-<use xlink:href="#fk_sym" x="4" y="79" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#158AA089-6E88C80DF653" >
+<use xlink:href="#fk_sym" x="4" y="79" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#983FC4EA-F9B445FB718E" >
 <text x="16" y="86" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_LIBAUT_CODIGOGEN (CODIGOAUT)
 </text></a>
-<use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#B5F10A83-9CAC85FBEEBD" >
+<use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#D8D94169-0F5282952102" >
 <text x="16" y="100" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_LIBAUT_CODIGOLIB (CODIGOLIB)
 </text></a>
@@ -534,9 +544,9 @@ U
 PK_CODIGOLIBAUT (CODIGOLIB, CODIGOAUT)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath3_0_)" transform="translate(759,335)" >
-<rect x="0" y="0" width="229" height="94" />
-<text id="CB1FE901-16F0E2B78D80" x="51" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath3_0_)" transform="translate(727,342)" >
+<rect x="0" y="0" width="229" height="96" />
+<text id="B163DA17-7B8B009FE15F" x="51" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.EDITORIALES
 </text>
 <line x1="0" y1="18" x2="228" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -574,9 +584,9 @@ U
 PK_CODIGOEDI (CODIGOEDI)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath8_0_)" transform="translate(757,465)" >
-<rect x="0" y="0" width="268" height="128" />
-<text id="B91683D0-0ECB015E8920" x="57" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath8_0_)" transform="translate(726,459)" >
+<rect x="0" y="0" width="268" height="130" />
+<text id="7FE35877-1BD5614D0BF8" x="57" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.LIBROS_GENEROS
 </text>
 <line x1="0" y1="18" x2="267" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -610,11 +620,11 @@ VARCHAR2 (10 BYTE)
 PK_CODIGOLIBGEN (CODIGOLIB, CODIGOGEN)
 </text>
 <line x1="0" y1="72" x2="267" y2="72" fill="none" stroke="rgb(0,0,255)"/>
-<use xlink:href="#fk_sym" x="4" y="79" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#48F2C46C-479151AC80DD" >
+<use xlink:href="#fk_sym" x="4" y="79" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#0E35CEE6-98A36D87FA27" >
 <text x="16" y="86" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_LIBGEN_CODIGOGEN (CODIGOGEN)
 </text></a>
-<use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#B5F10A83-9CAC85FBEEBD" >
+<use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#D8D94169-0F5282952102" >
 <text x="16" y="100" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_LIBGEN_CODIGOLIB (CODIGOLIB)
 </text></a>
@@ -626,9 +636,9 @@ U
 PK_CODIGOLIBGEN (CODIGOLIB, CODIGOGEN)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath12_0_)" transform="translate(371,192)" >
-<rect x="0" y="0" width="262" height="128" />
-<text id="55A3683C-430090F9684E" x="54" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath12_0_)" transform="translate(385,177)" >
+<rect x="0" y="0" width="262" height="130" />
+<text id="69EFC418-17E6917FED76" x="54" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.USUARIOS_ROLES
 </text>
 <line x1="0" y1="18" x2="261" y2="18" fill="none" stroke="rgb(0,0,255)"/>
@@ -662,11 +672,11 @@ VARCHAR2 (10 BYTE)
 PK_CODIGOUSROL (CODIGOUS, CODIGOROL)
 </text>
 <line x1="0" y1="72" x2="261" y2="72" fill="none" stroke="rgb(0,0,255)"/>
-<use xlink:href="#fk_sym" x="4" y="79" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#D5954AE3-E7646A3ACB21" >
+<use xlink:href="#fk_sym" x="4" y="79" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#53EE5D3A-8ADDAF36EB12" >
 <text x="16" y="86" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_USROL_CODIGOROL (CODIGOROL)
 </text></a>
-<use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#483533A1-5B12B3EAEFEF" >
+<use xlink:href="#fk_sym" x="4" y="93" width="8" height="8" fill-opacity="1.0"/><a xlink:href="#78E3E074-250C08BC3265" >
 <text x="16" y="100" fill="rgb(0,0,0)" fill-opacity="1.0" font-size="10" stroke="none">
 FK_USROL_CODIGOUS (CODIGOUS)
 </text></a>
@@ -678,9 +688,9 @@ U
 PK_CODIGOUSROL (CODIGOUS, CODIGOROL)
 </text>
 </g>
-<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath2_0_)" transform="translate(9,576)" >
-<rect x="0" y="0" width="269" height="150" />
-<text id="158AA089-6E88C80DF653" x="81" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
+<g  fill="rgb(255,255,180)" stroke="rgb(0,0,255)" fill-opacity="1.0" stroke-opacity="1.0" clip-path="url(#clipPath2_0_)" transform="translate(17,577)" >
+<rect x="0" y="0" width="269" height="152" />
+<text id="983FC4EA-F9B445FB718E" x="81" y="14" fill="rgb(0,0,255)" font-weight="bold"  fill-opacity="1.0" font-size="10" stroke="none">
 BIBLIOWEB.AUTORES
 </text>
 <line x1="0" y1="18" x2="268" y2="18" fill="none" stroke="rgb(0,0,255)"/>
