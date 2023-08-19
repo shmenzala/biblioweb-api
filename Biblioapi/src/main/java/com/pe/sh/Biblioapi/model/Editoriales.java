@@ -4,10 +4,16 @@
  */
 package com.pe.sh.Biblioapi.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import java.io.Serializable;
+
 /**
  *
  * @author shmen
  */
-public class Editoriales {
+@Entity
+@Table(name = "EDITORIALES")
+public class Editoriales implements Serializable{
     
 }
