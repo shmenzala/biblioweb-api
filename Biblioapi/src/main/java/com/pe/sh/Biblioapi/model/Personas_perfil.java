@@ -4,11 +4,16 @@
  */
 package com.pe.sh.Biblioapi.model;
 
+import com.pe.sh.Biblioapi.configuration.StringKeyGenerator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 /**
  *
@@ -20,6 +25,11 @@ public class Personas_perfil implements Serializable{
     
     @Id
     @Column(name = "codigope")
+    @GeneratedValue(generator = "inc_seqPpl")
+    @GenericGenerator(name = "inc_seqPpl", type = StringKeyGenerator.class,
+            parameters = {@Parameter(name = "sqcName", value = "PERSONAS_PERFIL_SEQ"),
+                          @Parameter(name = "identificator_id", value = "PP")})
+    @SequenceGenerator(name = "inc_seqPpl", sequenceName = "PERSONAS_PERFIL_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "nombres")

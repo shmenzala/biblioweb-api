@@ -5,19 +5,24 @@
 package com.pe.sh.Biblioapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.pe.sh.Biblioapi.configuration.StringKeyGenerator;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 /**
  *
@@ -29,6 +34,11 @@ public class Usuarios implements Serializable{
     
     @Id
     @Column(name = "codigous")
+    @GeneratedValue(generator = "inc_seqUsu")
+    @GenericGenerator(name = "inc_seqUsu", type = StringKeyGenerator.class,
+            parameters = {@Parameter(name = "sqcName", value = "USUARIOS_SEQ"),
+                          @Parameter(name = "identificator_id", value = "US")})
+    @SequenceGenerator(name = "inc_seqUsu", sequenceName = "USUARIOS_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "username")

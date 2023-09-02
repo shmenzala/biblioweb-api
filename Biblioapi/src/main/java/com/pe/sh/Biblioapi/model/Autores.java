@@ -4,15 +4,20 @@
  */
 package com.pe.sh.Biblioapi.model;
 
+import com.pe.sh.Biblioapi.configuration.StringKeyGenerator;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 /**
  *
@@ -24,6 +29,11 @@ public class Autores implements Serializable{
     
     @Id
     @Column(name = "codigoaut")
+    @GeneratedValue(generator = "inc_seqAut")
+    @GenericGenerator(name = "inc_seqAut", type = StringKeyGenerator.class,
+            parameters = {@Parameter(name = "sqcName", value = "AUTORES_SEQ"),
+                          @Parameter(name = "identificator_id", value = "AU")})
+    @SequenceGenerator(name = "inc_seqAut", sequenceName = "AUTORES_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "nombres")
