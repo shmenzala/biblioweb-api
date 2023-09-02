@@ -65,11 +65,11 @@ public class UsuariosDto {
         this.password = password;
     }
 
-    public Personas_perfilDto getCodigope() {
+    public Personas_perfilDto getPersonas_perfil() {
         return codigope;
     }
 
-    public void setCodigope(Personas_perfilDto codigope) {
+    public void setPersonas_perfil(Personas_perfilDto codigope) {
         this.codigope = codigope;
     }
 
