@@ -12,4 +12,14 @@ import com.pe.sh.Biblioapi.dto.UsuariosDto;
  */
 public interface UsuariosService extends GenericService<UsuariosDto>{
     
+    public UsuariosDto create(UsuariosDto dto, String codigorol);
+    
+    public UsuariosDto addRoles(String id, String codigorol);
+    
+    public UsuariosDto removeRoles(String id, String codigorol);
+    
+    public UsuariosDto addLibrosFavoritos(String id, String codigolib);
+    
+    public UsuariosDto removeLibrosFavoritos(String id, String codigolib);
+    
 }
