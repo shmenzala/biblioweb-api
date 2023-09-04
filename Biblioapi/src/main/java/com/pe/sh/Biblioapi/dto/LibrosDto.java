@@ -85,11 +85,11 @@ public class LibrosDto {
         this.paginas = paginas;
     }
 
-    public EditorialesDto getCodigoedi() {
+    public EditorialesDto getEditorial() {
         return codigoedi;
     }
 
-    public void setCodigoedi(EditorialesDto codigoedi) {
+    public void setEditorial(EditorialesDto codigoedi) {
         this.codigoedi = codigoedi;
     }
 

@@ -81,11 +81,11 @@ public class UsuariosDto {
         this.roles = roles;
     }
 
-    public Set<LibrosDto> getLibros_favoritos() {
+    public Set<LibrosDto> getLibros() {
         return libros_favoritos;
     }
 
-    public void setLibros_favoritos(Set<LibrosDto> libros_favoritos) {
+    public void setLibros(Set<LibrosDto> libros_favoritos) {
         this.libros_favoritos = libros_favoritos;
     }
     
