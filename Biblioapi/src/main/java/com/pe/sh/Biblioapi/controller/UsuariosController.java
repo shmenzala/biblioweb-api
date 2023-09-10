@@ -36,7 +36,7 @@ public class UsuariosController {
             @PathVariable(value = "codigorol") String codigorol) {
         return new ResponseEntity<>(usuariosService.create(usuDto, codigorol), HttpStatus.CREATED);
     }
-
+    
     @GetMapping
     public List<UsuariosDto> listarUsuarios() {
         return usuariosService.findAll();
