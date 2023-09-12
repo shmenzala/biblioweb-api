@@ -6,6 +6,7 @@ package com.pe.sh.Biblioapi.service;
 
 import com.pe.sh.Biblioapi.configuration.Mapper;
 import com.pe.sh.Biblioapi.dto.RolesDto;
+import com.pe.sh.Biblioapi.exceptions.ResourceNotFoundException;
 import com.pe.sh.Biblioapi.model.Roles;
 import com.pe.sh.Biblioapi.repository.RolesRepository;
 import java.util.List;
@@ -40,14 +41,16 @@ public class RolesServiceImpl extends Mapper<Roles, RolesDto> implements RolesSe
 
     @Override
     public RolesDto findById(String id) {
-        Roles roles = rolesRepository.findById(id).orElseThrow(null);
+        Roles roles = rolesRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Rol", "id", id));
         
         return toDto(roles, RolesDto.class);
     }
 
     @Override
     public RolesDto update(RolesDto dto, String id) {
-        Roles roles = rolesRepository.findById(id).orElseThrow(null);
+        Roles roles = rolesRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Rol", "id", id));
         
         roles.setNombre(dto.getNombre());
         
@@ -58,7 +61,8 @@ public class RolesServiceImpl extends Mapper<Roles, RolesDto> implements RolesSe
 
     @Override
     public void delete(String id) {
-        Roles roles = rolesRepository.findById(id).orElseThrow(null);
+        Roles roles = rolesRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Rol", "id", id));
         rolesRepository.delete(roles);
     }
     

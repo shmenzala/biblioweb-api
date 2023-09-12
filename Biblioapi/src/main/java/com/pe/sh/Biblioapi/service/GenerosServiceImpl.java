@@ -6,6 +6,7 @@ package com.pe.sh.Biblioapi.service;
 
 import com.pe.sh.Biblioapi.configuration.Mapper;
 import com.pe.sh.Biblioapi.dto.GenerosDto;
+import com.pe.sh.Biblioapi.exceptions.ResourceNotFoundException;
 import com.pe.sh.Biblioapi.model.Generos;
 import com.pe.sh.Biblioapi.repository.GenerosRepository;
 import java.util.List;
@@ -40,14 +41,16 @@ public class GenerosServiceImpl extends Mapper<Generos, GenerosDto> implements G
 
     @Override
     public GenerosDto findById(String id) {
-        Generos generos =  generosRepository.findById(id).orElseThrow(null);
+        Generos generos =  generosRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Genero", "id", id));
         
         return toDto(generos, GenerosDto.class);
     }
 
     @Override
     public GenerosDto update(GenerosDto dto, String id) {
-        Generos generos = generosRepository.findById(id).orElseThrow(null);
+        Generos generos = generosRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Genero", "id", id));
         
         generos.setNombre(dto.getNombre());
         
@@ -59,7 +62,8 @@ public class GenerosServiceImpl extends Mapper<Generos, GenerosDto> implements G
 
     @Override
     public void delete(String id) {
-        Generos generos = generosRepository.findById(id).orElseThrow(null);
+        Generos generos = generosRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Genero", "id", id));
         generosRepository.delete(generos);
     }
     
