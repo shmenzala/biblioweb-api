@@ -19,10 +19,13 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  *
@@ -30,7 +33,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Table(name = "USUARIOS")
-public class Usuarios implements Serializable{
+public class Usuarios implements Serializable, UserDetails{
     
     @Id
     @Column(name = "codigous")
@@ -87,6 +90,7 @@ public class Usuarios implements Serializable{
         this.id = id;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
@@ -103,6 +107,7 @@ public class Usuarios implements Serializable{
         this.email = email;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
@@ -133,6 +138,31 @@ public class Usuarios implements Serializable{
 
     public void setLibros(Set<Libros> libros) {
         this.libros = libros;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean isEnabled() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
