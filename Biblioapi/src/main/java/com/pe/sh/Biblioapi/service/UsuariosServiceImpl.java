@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,17 +29,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsuariosServiceImpl extends Mapper<Usuarios, UsuariosDto> implements UsuariosService {
 
-    @Autowired
-    private UsuariosRepository usuariosRepository;
+    private final UsuariosRepository usuariosRepository;
 
-    @Autowired
-    private Personas_perfilRepository personas_perfilRepository;
+    private final Personas_perfilRepository personas_perfilRepository;
 
-    @Autowired
-    private RolesRepository rolesRepository;
+    private final RolesRepository rolesRepository;
 
-    @Autowired
-    private LibrosRepository librosRepository;
+    private final LibrosRepository librosRepository;
+
+    public UsuariosServiceImpl(UsuariosRepository usuariosRepository, Personas_perfilRepository personas_perfilRepository, RolesRepository rolesRepository, LibrosRepository librosRepository, ModelMapper modelMapper) {
+        super(modelMapper);
+        this.usuariosRepository = usuariosRepository;
+        this.personas_perfilRepository = personas_perfilRepository;
+        this.rolesRepository = rolesRepository;
+        this.librosRepository = librosRepository;
+    }
 
     @Override
     public UsuariosDto create(UsuariosDto dto, String codigorol) {

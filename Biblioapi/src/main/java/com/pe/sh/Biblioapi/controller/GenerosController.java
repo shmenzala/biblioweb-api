@@ -7,7 +7,6 @@ package com.pe.sh.Biblioapi.controller;
 import com.pe.sh.Biblioapi.dto.GenerosDto;
 import com.pe.sh.Biblioapi.service.GenerosService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,39 +25,42 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/generos")
 public class GenerosController {
+
+    private final GenerosService generosService;
     
-    @Autowired
-    private GenerosService generosService;
-    
+    public GenerosController(GenerosService generosService) {
+        this.generosService = generosService;
+    }
+
     @PostMapping
     public ResponseEntity<GenerosDto> crearGenero(
-            @RequestBody GenerosDto genDto){
+            @RequestBody GenerosDto genDto) {
         return new ResponseEntity<>(generosService.create(genDto), HttpStatus.OK);
     }
-    
+
     @GetMapping
-    public List<GenerosDto> listarGeneros(){
+    public List<GenerosDto> listarGeneros() {
         return generosService.findAll();
     }
-    
+
     @GetMapping("/{codigogen}")
     public ResponseEntity<GenerosDto> buscarGeneroPorId(
-            @PathVariable(value = "codigogen") String codigogen){
+            @PathVariable(value = "codigogen") String codigogen) {
         return ResponseEntity.ok(generosService.findById(codigogen));
     }
-        
+
     @PutMapping("/{codigogen}")
     public ResponseEntity<GenerosDto> actualizarGenero(
             @RequestBody GenerosDto genDto,
-            @PathVariable(value = "codigogen") String codigogen){
+            @PathVariable(value = "codigogen") String codigogen) {
         return new ResponseEntity<>(generosService.update(genDto, codigogen), HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/{codigogen}")
     public ResponseEntity<String> eliminarGenero(
-            @PathVariable(value = "codigogen") String codigogen){
+            @PathVariable(value = "codigogen") String codigogen) {
         generosService.delete(codigogen);
         return new ResponseEntity<>("Genero eliminado con éxito", HttpStatus.OK);
     }
-    
+
 }

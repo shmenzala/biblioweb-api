@@ -18,7 +18,7 @@ import com.pe.sh.Biblioapi.repository.LibrosRepository;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,17 +28,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class LibrosServiceImpl extends Mapper<Libros, LibrosDto> implements LibrosService {
 
-    @Autowired
-    private LibrosRepository librosRepository;
+    private final LibrosRepository librosRepository;
 
-    @Autowired
-    private EditorialesRepository editorialesRepository;
+    private final EditorialesRepository editorialesRepository;
 
-    @Autowired
-    private AutoresRepository autoresRepository;
+    private final AutoresRepository autoresRepository;
 
-    @Autowired
-    private GenerosRepository generosRepository;
+    private final GenerosRepository generosRepository;
+
+    public LibrosServiceImpl(LibrosRepository librosRepository, EditorialesRepository editorialesRepository, AutoresRepository autoresRepository, GenerosRepository generosRepository, ModelMapper modelMapper) {
+        super(modelMapper);
+        this.librosRepository = librosRepository;
+        this.editorialesRepository = editorialesRepository;
+        this.autoresRepository = autoresRepository;
+        this.generosRepository = generosRepository;
+    }
 
     @Override
     public LibrosDto create(LibrosDto dto, String codigoedi) {

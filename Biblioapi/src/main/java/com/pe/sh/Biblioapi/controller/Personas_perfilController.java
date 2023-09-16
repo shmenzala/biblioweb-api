@@ -7,7 +7,6 @@ package com.pe.sh.Biblioapi.controller;
 import com.pe.sh.Biblioapi.dto.Personas_perfilDto;
 import com.pe.sh.Biblioapi.service.Personas_perfilService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,40 +25,42 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/ppl")
 public class Personas_perfilController {
-    
-    @Autowired
-    private Personas_perfilService personas_perfilService;
-    
+
+    private final Personas_perfilService personas_perfilService;
+
+    public Personas_perfilController(Personas_perfilService personas_perfilService) {
+        this.personas_perfilService = personas_perfilService;
+    }
+
     @PostMapping
     public ResponseEntity<Personas_perfilDto> crearPersona_perfil(
-            @RequestBody Personas_perfilDto pplDto){
+            @RequestBody Personas_perfilDto pplDto) {
         return new ResponseEntity<>(personas_perfilService.create(pplDto), HttpStatus.OK);
     }
-    
+
     @GetMapping
-    public List<Personas_perfilDto> listarPersonas_perfil(){
+    public List<Personas_perfilDto> listarPersonas_perfil() {
         return personas_perfilService.findAll();
     }
-    
+
     @GetMapping("/{codigoppl}")
     public ResponseEntity<Personas_perfilDto> buscarPersona_perfilPorId(
-            @PathVariable(value = "codigoppl") String codigoppl){
+            @PathVariable(value = "codigoppl") String codigoppl) {
         return ResponseEntity.ok(personas_perfilService.findById(codigoppl));
     }
-        
+
     @PutMapping("/{codigoppl}")
     public ResponseEntity<Personas_perfilDto> actualizarPersona_perfil(
             @RequestBody Personas_perfilDto pplDto,
-            @PathVariable(value = "codigoppl") String codigoppl){
+            @PathVariable(value = "codigoppl") String codigoppl) {
         return new ResponseEntity<>(personas_perfilService.update(pplDto, codigoppl), HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/{codigoppl}")
     public ResponseEntity<String> eliminarPersona_perfil(
-            @PathVariable(value = "codigoppl") String codigoppl){
+            @PathVariable(value = "codigoppl") String codigoppl) {
         personas_perfilService.delete(codigoppl);
         return new ResponseEntity<>("Persona_perfil eliminado con éxito", HttpStatus.OK);
     }
-    
-    
+
 }

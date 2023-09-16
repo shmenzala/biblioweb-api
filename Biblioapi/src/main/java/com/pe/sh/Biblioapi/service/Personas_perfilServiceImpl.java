@@ -11,7 +11,7 @@ import com.pe.sh.Biblioapi.model.Personas_perfil;
 import com.pe.sh.Biblioapi.repository.Personas_perfilRepository;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,8 +21,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class Personas_perfilServiceImpl extends Mapper<Personas_perfil, Personas_perfilDto> implements Personas_perfilService {
 
-    @Autowired
-    private Personas_perfilRepository personas_perfilRepository;
+    private final Personas_perfilRepository personas_perfilRepository;
+
+    public Personas_perfilServiceImpl(Personas_perfilRepository personas_perfilRepository, ModelMapper modelMapper) {
+        super(modelMapper);
+        this.personas_perfilRepository = personas_perfilRepository;
+    }
 
     @Override
     public Personas_perfilDto create(Personas_perfilDto dto) {

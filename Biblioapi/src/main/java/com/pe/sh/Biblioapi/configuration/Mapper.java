@@ -5,7 +5,6 @@
 package com.pe.sh.Biblioapi.configuration;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -15,8 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class Mapper<E, T> {
 
-    @Autowired
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+
+    public Mapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     protected E toEntity(T dto, Class<E> clase) {
         E entity = modelMapper.map(dto, clase);

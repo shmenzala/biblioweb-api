@@ -7,7 +7,6 @@ package com.pe.sh.Biblioapi.controller;
 import com.pe.sh.Biblioapi.dto.EditorialesDto;
 import com.pe.sh.Biblioapi.service.EditorialesService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,8 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/editoriales")
 public class EditorialesController {
 
-    @Autowired
-    private EditorialesService editorialesService;
+    private final EditorialesService editorialesService;
+
+    public EditorialesController(EditorialesService editorialesService) {
+        this.editorialesService = editorialesService;
+    }
 
     @PostMapping
     public ResponseEntity<EditorialesDto> crearEditorial(

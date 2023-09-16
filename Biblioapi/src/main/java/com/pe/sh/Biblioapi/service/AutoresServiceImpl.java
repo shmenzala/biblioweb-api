@@ -11,7 +11,7 @@ import com.pe.sh.Biblioapi.model.Autores;
 import com.pe.sh.Biblioapi.repository.AutoresRepository;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,8 +21,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class AutoresServiceImpl extends Mapper<Autores, AutoresDto> implements AutoresService {
 
-    @Autowired
-    private AutoresRepository autoresRepository;
+    private final AutoresRepository autoresRepository;
+
+    public AutoresServiceImpl(AutoresRepository autoresRepository, ModelMapper modelMapper) {
+        super(modelMapper);
+        this.autoresRepository = autoresRepository;
+    }
 
     @Override
     public AutoresDto create(AutoresDto dto) {

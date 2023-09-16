@@ -11,7 +11,7 @@ import com.pe.sh.Biblioapi.model.Editoriales;
 import com.pe.sh.Biblioapi.repository.EditorialesRepository;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,8 +21,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class EditorialesServiceImpl extends Mapper<Editoriales, EditorialesDto> implements EditorialesService {
 
-    @Autowired
-    private EditorialesRepository editorialesRepository;
+    private final EditorialesRepository editorialesRepository;
+
+    public EditorialesServiceImpl(EditorialesRepository editorialesRepository, ModelMapper modelMapper) {
+        super(modelMapper);
+        this.editorialesRepository = editorialesRepository;
+    }
 
     @Override
     public EditorialesDto create(EditorialesDto dto) {
