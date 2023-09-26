@@ -5,6 +5,8 @@
 package com.pe.sh.Biblioapi.controller;
 
 import com.pe.sh.Biblioapi.dto.RolesDto;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
+import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.RolesService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -35,27 +38,37 @@ public class RolesController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<RolesDto> crearPersona_perfil(
+    public ResponseEntity<RolesDto> crearRol(
             @RequestBody RolesDto rolDto) {
         return new ResponseEntity<>(rolesService.create(rolDto), HttpStatus.OK);
     }
 
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public List<RolesDto> listarPersonas_perfil() {
+    public PageableDataDto listarRolesPaginados(
+            @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = PageableValues.DEFAULT_ORDER_BY, required = false) String orderBy,
+            @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir) {
+        return rolesService.findAllPagination(pageNo, pageSize, orderBy, sortDir);
+    }
+    
+    @GetMapping("/all")
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<RolesDto> listarRoles() {
         return rolesService.findAll();
     }
 
     @GetMapping("/{codigorol}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<RolesDto> buscarPersona_perfilPorId(
+    public ResponseEntity<RolesDto> buscarRolPorId(
             @PathVariable(value = "codigorol") String codigorol) {
         return ResponseEntity.ok(rolesService.findById(codigorol));
     }
 
     @PutMapping("/{codigorol}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<RolesDto> actualizarPersona_perfil(
+    public ResponseEntity<RolesDto> actualizarRol(
             @RequestBody RolesDto rolDto,
             @PathVariable(value = "codigorol") String codigorol) {
         return new ResponseEntity<>(rolesService.update(rolDto, codigorol), HttpStatus.OK);
@@ -63,7 +76,7 @@ public class RolesController {
 
     @DeleteMapping("/{codigorol}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> eliminarPersona_perfil(
+    public ResponseEntity<String> eliminarRol(
             @PathVariable(value = "codigorol") String codigorol) {
         rolesService.delete(codigorol);
         return new ResponseEntity<>("Persona_perfil eliminado con éxito", HttpStatus.OK);

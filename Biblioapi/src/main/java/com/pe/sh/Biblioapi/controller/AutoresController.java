@@ -5,6 +5,8 @@
 package com.pe.sh.Biblioapi.controller;
 
 import com.pe.sh.Biblioapi.dto.AutoresDto;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
+import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.AutoresService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -39,6 +42,15 @@ public class AutoresController {
     }
 
     @GetMapping
+    public PageableDataDto listarAutoresPaginados(
+            @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = PageableValues.DEFAULT_ORDER_BY, required = false) String orderBy,
+            @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir) {
+        return autoresService.findAllPagination(pageNo, pageSize, orderBy, sortDir);
+    }
+    
+    @GetMapping("/all")
     public List<AutoresDto> listarAutores() {
         return autoresService.findAll();
     }
