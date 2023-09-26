@@ -11,6 +11,7 @@ import com.pe.sh.Biblioapi.model.Autores;
 import com.pe.sh.Biblioapi.model.Editoriales;
 import com.pe.sh.Biblioapi.model.Generos;
 import com.pe.sh.Biblioapi.model.Libros;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.repository.AutoresRepository;
 import com.pe.sh.Biblioapi.repository.EditorialesRepository;
 import com.pe.sh.Biblioapi.repository.GenerosRepository;
@@ -19,6 +20,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -182,6 +187,27 @@ public class LibrosServiceImpl extends Mapper<Libros, LibrosDto> implements Libr
     @Override
     public LibrosDto update(LibrosDto dto, String id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Libros> librosPage = librosRepository.findAll(pageable);
+        
+        List<LibrosDto> content = librosPage.getContent().stream().map(libro -> toDto(libro, LibrosDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto librosResp = new PageableDataDto();
+        
+        librosResp.setContent(content);
+        librosResp.setPageNo(librosPage.getNumber());
+        librosResp.setPageSize(librosPage.getSize());
+        librosResp.setTotalElements(librosPage.getTotalElements());
+        librosResp.setTotalPages(librosPage.getTotalPages());
+        librosResp.setLast(librosPage.isLast());
+        
+        return librosResp;
     }
 
 }

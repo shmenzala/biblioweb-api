@@ -8,10 +8,15 @@ import com.pe.sh.Biblioapi.configuration.Mapper;
 import com.pe.sh.Biblioapi.dto.AutoresDto;
 import com.pe.sh.Biblioapi.exceptions.ResourceNotFoundException;
 import com.pe.sh.Biblioapi.model.Autores;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.repository.AutoresRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -72,6 +77,27 @@ public class AutoresServiceImpl extends Mapper<Autores, AutoresDto> implements A
         Autores autores = autoresRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Autor", "id", id));
         autoresRepository.delete(autores);
+    }
+
+    @Override
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Autores> autoresPage = autoresRepository.findAll(pageable);
+        
+        List<AutoresDto> content = autoresPage.getContent().stream().map(autor -> toDto(autor, AutoresDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto autoresResp = new PageableDataDto();
+        
+        autoresResp.setContent(content);
+        autoresResp.setPageNo(autoresPage.getNumber());
+        autoresResp.setPageSize(autoresPage.getSize());
+        autoresResp.setTotalElements(autoresPage.getTotalElements());
+        autoresResp.setTotalPages(autoresPage.getTotalPages());
+        autoresResp.setLast(autoresPage.isLast());
+        
+        return autoresResp;
     }
 
 }

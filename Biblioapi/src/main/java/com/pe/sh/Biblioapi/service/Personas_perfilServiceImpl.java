@@ -8,10 +8,15 @@ import com.pe.sh.Biblioapi.configuration.Mapper;
 import com.pe.sh.Biblioapi.dto.Personas_perfilDto;
 import com.pe.sh.Biblioapi.exceptions.ResourceNotFoundException;
 import com.pe.sh.Biblioapi.model.Personas_perfil;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.repository.Personas_perfilRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -72,6 +77,27 @@ public class Personas_perfilServiceImpl extends Mapper<Personas_perfil, Personas
         Personas_perfil personas_perfil = personas_perfilRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Persona_perfil", "id", id));
         personas_perfilRepository.delete(personas_perfil);
+    }
+
+    @Override
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Personas_perfil> ppfPage = personas_perfilRepository.findAll(pageable);
+        
+        List<Personas_perfilDto> content = ppfPage.getContent().stream().map(ppf -> toDto(ppf, Personas_perfilDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto ppfResp = new PageableDataDto();
+        
+        ppfResp.setContent(content);
+        ppfResp.setPageNo(ppfPage.getNumber());
+        ppfResp.setPageSize(ppfPage.getSize());
+        ppfResp.setTotalElements(ppfPage.getTotalElements());
+        ppfResp.setTotalPages(ppfPage.getTotalPages());
+        ppfResp.setLast(ppfPage.isLast());
+        
+        return ppfResp;
     }
 
 }

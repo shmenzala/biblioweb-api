@@ -8,10 +8,15 @@ import com.pe.sh.Biblioapi.configuration.Mapper;
 import com.pe.sh.Biblioapi.dto.EditorialesDto;
 import com.pe.sh.Biblioapi.exceptions.ResourceNotFoundException;
 import com.pe.sh.Biblioapi.model.Editoriales;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.repository.EditorialesRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -34,6 +39,27 @@ public class EditorialesServiceImpl extends Mapper<Editoriales, EditorialesDto> 
         Editoriales nuevoEditorial = editorialesRepository.save(editoriales);
 
         return toDto(nuevoEditorial, EditorialesDto.class);
+    }
+    
+    @Override
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Editoriales> editorialesPage = editorialesRepository.findAll(pageable);
+        
+        List<EditorialesDto> content = editorialesPage.getContent().stream().map(editorial -> toDto(editorial, EditorialesDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto editorialesResp = new PageableDataDto();
+        
+        editorialesResp.setContent(content);
+        editorialesResp.setPageNo(editorialesPage.getNumber());
+        editorialesResp.setPageSize(editorialesPage.getSize());
+        editorialesResp.setTotalElements(editorialesPage.getTotalElements());
+        editorialesResp.setTotalPages(editorialesPage.getTotalPages());
+        editorialesResp.setLast(editorialesPage.isLast());
+        
+        return editorialesResp;
     }
 
     @Override

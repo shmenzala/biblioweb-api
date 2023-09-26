@@ -11,6 +11,7 @@ import com.pe.sh.Biblioapi.model.Libros;
 import com.pe.sh.Biblioapi.model.Personas_perfil;
 import com.pe.sh.Biblioapi.model.Roles;
 import com.pe.sh.Biblioapi.model.Usuarios;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.repository.LibrosRepository;
 import com.pe.sh.Biblioapi.repository.Personas_perfilRepository;
 import com.pe.sh.Biblioapi.repository.RolesRepository;
@@ -20,6 +21,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -69,6 +74,27 @@ public class UsuariosServiceImpl extends Mapper<Usuarios, UsuariosDto> implement
         return toDto(nuevoUsuario, UsuariosDto.class);
     }
 
+    @Override
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir){
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Usuarios> usuariosPage = usuariosRepository.findAll(pageable);
+        
+        List<UsuariosDto> content = usuariosPage.getContent().stream().map(usuario -> toDto(usuario, UsuariosDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto usuariosResp = new PageableDataDto();
+        
+        usuariosResp.setContent(content);
+        usuariosResp.setPageNo(usuariosPage.getNumber());
+        usuariosResp.setPageSize(usuariosPage.getSize());
+        usuariosResp.setTotalElements(usuariosPage.getTotalElements());
+        usuariosResp.setTotalPages(usuariosPage.getTotalPages());
+        usuariosResp.setLast(usuariosPage.isLast());
+        
+        return usuariosResp;
+    }
+    
     @Override
     public List<UsuariosDto> findAll() {
         List<Usuarios> usuarios = usuariosRepository.findAll();

@@ -8,10 +8,15 @@ import com.pe.sh.Biblioapi.configuration.Mapper;
 import com.pe.sh.Biblioapi.dto.RolesDto;
 import com.pe.sh.Biblioapi.exceptions.ResourceNotFoundException;
 import com.pe.sh.Biblioapi.model.Roles;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.repository.RolesRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,7 +26,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RolesServiceImpl extends Mapper<Roles, RolesDto> implements RolesService {
 
-    private RolesRepository rolesRepository;
+    private final RolesRepository rolesRepository;
 
     public RolesServiceImpl(RolesRepository rolesRepository, ModelMapper modelMapper) {
         super(modelMapper);
@@ -68,6 +73,27 @@ public class RolesServiceImpl extends Mapper<Roles, RolesDto> implements RolesSe
         Roles roles = rolesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Rol", "id", id));
         rolesRepository.delete(roles);
+    }
+
+    @Override
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Roles> rolesPage = rolesRepository.findAll(pageable);
+        
+        List<RolesDto> content = rolesPage.getContent().stream().map(rol -> toDto(rol, RolesDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto rolesResp = new PageableDataDto();
+        
+        rolesResp.setContent(content);
+        rolesResp.setPageNo(rolesPage.getNumber());
+        rolesResp.setPageSize(rolesPage.getSize());
+        rolesResp.setTotalElements(rolesPage.getTotalElements());
+        rolesResp.setTotalPages(rolesPage.getTotalPages());
+        rolesResp.setLast(rolesPage.isLast());
+        
+        return rolesResp;
     }
 
 }

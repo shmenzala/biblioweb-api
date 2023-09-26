@@ -8,10 +8,15 @@ import com.pe.sh.Biblioapi.configuration.Mapper;
 import com.pe.sh.Biblioapi.dto.GenerosDto;
 import com.pe.sh.Biblioapi.exceptions.ResourceNotFoundException;
 import com.pe.sh.Biblioapi.model.Generos;
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.repository.GenerosRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -69,6 +74,27 @@ public class GenerosServiceImpl extends Mapper<Generos, GenerosDto> implements G
         Generos generos = generosRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Genero", "id", id));
         generosRepository.delete(generos);
+    }
+
+    @Override
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Generos> generosPage = generosRepository.findAll(pageable);
+        
+        List<GenerosDto> content = generosPage.getContent().stream().map(genero -> toDto(genero, GenerosDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto generosResp = new PageableDataDto();
+        
+        generosResp.setContent(content);
+        generosResp.setPageNo(generosPage.getNumber());
+        generosResp.setPageSize(generosPage.getSize());
+        generosResp.setTotalElements(generosPage.getTotalElements());
+        generosResp.setTotalPages(generosPage.getTotalPages());
+        generosResp.setLast(generosPage.isLast());
+        
+        return generosResp;
     }
 
 }
