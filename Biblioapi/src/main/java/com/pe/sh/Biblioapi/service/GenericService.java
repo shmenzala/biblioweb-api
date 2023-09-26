@@ -4,6 +4,7 @@
  */
 package com.pe.sh.Biblioapi.service;
 
+import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import java.util.List;
 
 /**
@@ -22,5 +23,7 @@ public interface GenericService<E> {
     public E update(E dto, String id);
 
     public void delete(String id);
+    
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir);
 
 }
