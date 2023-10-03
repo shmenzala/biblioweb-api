@@ -65,6 +65,16 @@ public class RolesController {
             @PathVariable(value = "codigorol") String codigorol) {
         return ResponseEntity.ok(rolesService.findById(codigorol));
     }
+    
+    @GetMapping("/cs/{coincidencia}")
+    public PageableDataDto buscarEditorialPorCoincidencia(
+            @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = "codigorol", required = false) String orderBy,
+            @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir,
+            @PathVariable(value = "coincidencia") String coincidencia) {
+        return rolesService.findAllWithCoincidence(coincidencia, pageNo, pageSize, orderBy, sortDir);
+    }
 
     @PutMapping("/{codigorol}")
     @PreAuthorize("hasRole('ADMIN')")

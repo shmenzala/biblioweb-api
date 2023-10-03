@@ -60,6 +60,16 @@ public class Personas_perfilController {
             @PathVariable(value = "codigoppl") String codigoppl) {
         return ResponseEntity.ok(personas_perfilService.findById(codigoppl));
     }
+    
+    @GetMapping("/cs/{coincidencia}")
+    public PageableDataDto buscarEditorialPorCoincidencia(
+            @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = "codigope", required = false) String orderBy,
+            @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir,
+            @PathVariable(value = "coincidencia") String coincidencia) {
+        return personas_perfilService.findAllWithCoincidence(coincidencia, pageNo, pageSize, orderBy, sortDir);
+    }
 
     @PutMapping("/{codigoppl}")
     public ResponseEntity<Personas_perfilDto> actualizarPersona_perfil(

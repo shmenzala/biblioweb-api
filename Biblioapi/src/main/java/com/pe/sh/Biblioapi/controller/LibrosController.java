@@ -61,6 +61,16 @@ public class LibrosController {
             @PathVariable(value = "codigolib") String codigolib) {
         return ResponseEntity.ok(librosService.findById(codigolib));
     }
+    
+    @GetMapping("/cs/{coincidencia}")
+    public PageableDataDto buscarEditorialPorCoincidencia(
+            @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = "codigolib", required = false) String orderBy,
+            @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir,
+            @PathVariable(value = "coincidencia") String coincidencia) {
+        return librosService.findAllWithCoincidence(coincidencia, pageNo, pageSize, orderBy, sortDir);
+    }
 
     @PutMapping("/{codigolib}/{codigoedi}")
     public ResponseEntity<LibrosDto> actualizarLibro(

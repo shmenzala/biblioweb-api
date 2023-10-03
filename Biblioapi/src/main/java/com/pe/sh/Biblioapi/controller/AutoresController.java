@@ -60,6 +60,16 @@ public class AutoresController {
             @PathVariable(value = "codigoaut") String codigoaut) {
         return ResponseEntity.ok(autoresService.findById(codigoaut));
     }
+        
+    @GetMapping("/cs/{coincidencia}")
+    public PageableDataDto buscarEditorialPorCoincidencia(
+            @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = "codigoaut", required = false) String orderBy,
+            @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir,
+            @PathVariable(value = "coincidencia") String coincidencia) {
+        return autoresService.findAllWithCoincidence(coincidencia, pageNo, pageSize, orderBy, sortDir);
+    }
 
     @PutMapping("/{codigoaut}")
     public ResponseEntity<AutoresDto> actualizarAutor(

@@ -49,7 +49,7 @@ public class EditorialesController {
             @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir) {
         return editorialesService.findAllPagination(pageNo, pageSize, orderBy, sortDir);
     }
-    
+
     @GetMapping("/all")
     public List<EditorialesDto> listarEditoriales() {
         return editorialesService.findAll();
@@ -59,6 +59,16 @@ public class EditorialesController {
     public ResponseEntity<EditorialesDto> buscarEditorialPorId(
             @PathVariable(value = "codigoedi") String codigoedi) {
         return ResponseEntity.ok(editorialesService.findById(codigoedi));
+    }
+
+    @GetMapping("/cs/{coincidencia}")
+    public PageableDataDto buscarEditorialPorCoincidencia(
+            @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+            @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+            @RequestParam(value = "sortBy", defaultValue = "codigoedi", required = false) String orderBy,
+            @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir,
+            @PathVariable(value = "coincidencia") String coincidencia) {
+        return editorialesService.findAllWithCoincidence(coincidencia, pageNo, pageSize, orderBy, sortDir);
     }
 
     @PutMapping("/{codigoedi}")
