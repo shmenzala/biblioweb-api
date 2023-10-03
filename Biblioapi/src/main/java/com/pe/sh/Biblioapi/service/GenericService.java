@@ -25,5 +25,7 @@ public interface GenericService<E> {
     public void delete(String id);
     
     public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir);
+    
+    public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir);
 
 }
