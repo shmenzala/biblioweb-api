@@ -100,4 +100,25 @@ public class Personas_perfilServiceImpl extends Mapper<Personas_perfil, Personas
         return ppfResp;
     }
 
+    @Override
+    public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Personas_perfil> ppfPage = personas_perfilRepository.buscarPersonas_perfilPorCoincidencia(search, pageable);
+        
+        List<Personas_perfilDto> content = ppfPage.getContent().stream().map(ppf -> toDto(ppf, Personas_perfilDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto ppfResp = new PageableDataDto();
+        
+        ppfResp.setContent(content);
+        ppfResp.setPageNo(ppfPage.getNumber());
+        ppfResp.setPageSize(ppfPage.getSize());
+        ppfResp.setTotalElements(ppfPage.getTotalElements());
+        ppfResp.setTotalPages(ppfPage.getTotalPages());
+        ppfResp.setLast(ppfPage.isLast());
+        
+        return ppfResp;
+    }
+
 }

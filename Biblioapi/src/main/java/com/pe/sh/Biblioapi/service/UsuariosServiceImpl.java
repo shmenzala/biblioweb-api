@@ -204,4 +204,25 @@ public class UsuariosServiceImpl extends Mapper<Usuarios, UsuariosDto> implement
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    @Override
+    public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Usuarios> usuariosPage = usuariosRepository.buscarUsuariosPorCoincidencia(search, pageable);
+        
+        List<UsuariosDto> content = usuariosPage.getContent().stream().map(usuario -> toDto(usuario, UsuariosDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto usuariosResp = new PageableDataDto();
+        
+        usuariosResp.setContent(content);
+        usuariosResp.setPageNo(usuariosPage.getNumber());
+        usuariosResp.setPageSize(usuariosPage.getSize());
+        usuariosResp.setTotalElements(usuariosPage.getTotalElements());
+        usuariosResp.setTotalPages(usuariosPage.getTotalPages());
+        usuariosResp.setLast(usuariosPage.isLast());
+        
+        return usuariosResp;
+    }
+
 }

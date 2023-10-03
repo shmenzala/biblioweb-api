@@ -96,4 +96,25 @@ public class RolesServiceImpl extends Mapper<Roles, RolesDto> implements RolesSe
         return rolesResp;
     }
 
+    @Override
+    public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Roles> rolesPage = rolesRepository.buscarRolesPorCoincidencia(search, pageable);
+        
+        List<RolesDto> content = rolesPage.getContent().stream().map(rol -> toDto(rol, RolesDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto rolesResp = new PageableDataDto();
+        
+        rolesResp.setContent(content);
+        rolesResp.setPageNo(rolesPage.getNumber());
+        rolesResp.setPageSize(rolesPage.getSize());
+        rolesResp.setTotalElements(rolesPage.getTotalElements());
+        rolesResp.setTotalPages(rolesPage.getTotalPages());
+        rolesResp.setLast(rolesPage.isLast());
+        
+        return rolesResp;
+    }
+
 }

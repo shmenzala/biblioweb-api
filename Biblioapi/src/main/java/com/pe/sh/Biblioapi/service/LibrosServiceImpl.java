@@ -210,4 +210,25 @@ public class LibrosServiceImpl extends Mapper<Libros, LibrosDto> implements Libr
         return librosResp;
     }
 
+    @Override
+    public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Libros> librosPage = librosRepository.buscarLibrosPorCoincidencia(search, pageable);
+        
+        List<LibrosDto> content = librosPage.getContent().stream().map(libro -> toDto(libro, LibrosDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto librosResp = new PageableDataDto();
+        
+        librosResp.setContent(content);
+        librosResp.setPageNo(librosPage.getNumber());
+        librosResp.setPageSize(librosPage.getSize());
+        librosResp.setTotalElements(librosPage.getTotalElements());
+        librosResp.setTotalPages(librosPage.getTotalPages());
+        librosResp.setLast(librosPage.isLast());
+        
+        return librosResp;
+    }
+
 }

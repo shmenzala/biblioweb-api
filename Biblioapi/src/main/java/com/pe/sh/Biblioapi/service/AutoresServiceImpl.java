@@ -81,22 +81,43 @@ public class AutoresServiceImpl extends Mapper<Autores, AutoresDto> implements A
 
     @Override
     public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir) {
-        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(orderBy).ascending() : Sort.by(orderBy).descending();
         Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
-        
+
         Page<Autores> autoresPage = autoresRepository.findAll(pageable);
-        
+
         List<AutoresDto> content = autoresPage.getContent().stream().map(autor -> toDto(autor, AutoresDto.class)).collect(Collectors.toList());
-        
+
         PageableDataDto autoresResp = new PageableDataDto();
-        
+
         autoresResp.setContent(content);
         autoresResp.setPageNo(autoresPage.getNumber());
         autoresResp.setPageSize(autoresPage.getSize());
         autoresResp.setTotalElements(autoresPage.getTotalElements());
         autoresResp.setTotalPages(autoresPage.getTotalPages());
         autoresResp.setLast(autoresPage.isLast());
-        
+
+        return autoresResp;
+    }
+
+    @Override
+    public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(orderBy).ascending() : Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+
+        Page<Autores> autoresPage = autoresRepository.buscarAutoresPorCoincidencia(search, pageable);
+
+        List<AutoresDto> content = autoresPage.getContent().stream().map(autor -> toDto(autor, AutoresDto.class)).collect(Collectors.toList());
+
+        PageableDataDto autoresResp = new PageableDataDto();
+
+        autoresResp.setContent(content);
+        autoresResp.setPageNo(autoresPage.getNumber());
+        autoresResp.setPageSize(autoresPage.getSize());
+        autoresResp.setTotalElements(autoresPage.getTotalElements());
+        autoresResp.setTotalPages(autoresPage.getTotalPages());
+        autoresResp.setLast(autoresPage.isLast());
+
         return autoresResp;
     }
 

@@ -97,4 +97,25 @@ public class GenerosServiceImpl extends Mapper<Generos, GenerosDto> implements G
         return generosResp;
     }
 
+    @Override
+    public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Generos> generosPage = generosRepository.buscarGenerosPorCoincidencia(search, pageable);
+        
+        List<GenerosDto> content = generosPage.getContent().stream().map(genero -> toDto(genero, GenerosDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto generosResp = new PageableDataDto();
+        
+        generosResp.setContent(content);
+        generosResp.setPageNo(generosPage.getNumber());
+        generosResp.setPageSize(generosPage.getSize());
+        generosResp.setTotalElements(generosPage.getTotalElements());
+        generosResp.setTotalPages(generosPage.getTotalPages());
+        generosResp.setLast(generosPage.isLast());
+        
+        return generosResp;
+    }
+
 }

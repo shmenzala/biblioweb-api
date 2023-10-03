@@ -96,4 +96,25 @@ public class EditorialesServiceImpl extends Mapper<Editoriales, EditorialesDto> 
         editorialesRepository.delete(editoriales);
     }
 
+    @Override
+    public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        
+        Page<Editoriales> editorialesPage = editorialesRepository.buscarEditorialPorCoincidencia(search, pageable);
+        
+        List<EditorialesDto> content = editorialesPage.getContent().stream().map(editorial -> toDto(editorial, EditorialesDto.class)).collect(Collectors.toList());
+        
+        PageableDataDto editorialesResp = new PageableDataDto();
+        
+        editorialesResp.setContent(content);
+        editorialesResp.setPageNo(editorialesPage.getNumber());
+        editorialesResp.setPageSize(editorialesPage.getSize());
+        editorialesResp.setTotalElements(editorialesPage.getTotalElements());
+        editorialesResp.setTotalPages(editorialesPage.getTotalPages());
+        editorialesResp.setLast(editorialesPage.isLast());
+        
+        return editorialesResp;
+    }
+
 }
