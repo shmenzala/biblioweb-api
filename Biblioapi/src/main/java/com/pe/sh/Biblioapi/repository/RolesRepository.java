@@ -6,7 +6,11 @@ package com.pe.sh.Biblioapi.repository;
 
 import com.pe.sh.Biblioapi.model.Roles;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,5 +21,10 @@ import org.springframework.stereotype.Repository;
 public interface RolesRepository extends JpaRepository<Roles, String>{
  
     public Optional<Roles> findByNombre(String nombre);
+    
+    @Query(value = "select * from Roles where upper(codigorol) like upper('%'||:search||'%') or upper(nombre) like upper('%'||:search||'%')",
+            countQuery = "select count(*) from Roles where upper(codigorol) like upper('%'||:search||'%') or upper(nombre) like upper('%'||:search||'%')",
+            nativeQuery = true)
+    public Page<Roles> buscarRolesPorCoincidencia(@Param("search") String search, Pageable pageable);
     
 }
