@@ -41,7 +41,7 @@ public class Personas_perfil implements Serializable{
     @Column(name = "genero")
     private String genero;
     
-    @Column(name = "fech_nacimento")
+    @Column(name = "fech_nacimiento")
     private String fech_nacimiento;
     
     @Column(name = "fotografia")
