@@ -22,6 +22,8 @@ public interface UsuariosRepository extends JpaRepository<Usuarios, String>{
     
     public Optional<Usuarios> findByUsername(String username);
     
+    public Optional<Usuarios> findByUsernameOrEmail(String username, String email);
+    
     public Boolean existsByUsername(String username);
     
     @Query(value = "select * from Usuarios where upper(codigous) like upper('%'||:search||'%') or upper(username) like upper('%'||:search||'%') or upper(email) like upper('%'||:search||'%')",
