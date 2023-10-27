@@ -88,7 +88,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 )
         );
 
-        Usuarios usuario = usuariosRepository.findByUsername(logDto.getUsername())
+        Usuarios usuario = usuariosRepository.findByUsernameOrEmail(logDto.getUsername(), logDto.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
         usuario.getRoles().forEach((rol) -> System.out.println(rol.getNombre()));
