@@ -4,6 +4,8 @@
  */
 package com.pe.sh.Biblioapi.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import java.util.Set;
 
 /**
@@ -13,9 +15,17 @@ import java.util.Set;
 public class UsuariosDto {
     
     private String codigous;
+    
+    @NotEmpty(message = "El campo usuario no debe estar vacío")
     private String username;
+    
+    @NotEmpty(message = "El campo email no debe estar vacío")
+    @Email(message = "El campo email tiene una dirección de correo electrónico con formato INCORRECTO" ,regexp = "(?i)^(([^<>()[\\\\]\\.,;:\\s@\\\\\"]+(\\.[^<>()[\\\\]\\.,;:\\s@\\\\\"]+)*)|(\\\\\".+\\\\\"))@(([^<>()[\\\\]\\.,;:\\s@\\\\\"]+\\.)+[^<>()[\\\\]\\.,;:\\s@\\\\\"]{2,})$")
     private String email;
+    
+    @NotEmpty(message = "El campo password no debe estar vacío")
     private String password;
+    
     private Personas_perfilDto codigope;
     private Set<RolesDto> roles;
     private Set<LibrosDto> libros_favoritos;

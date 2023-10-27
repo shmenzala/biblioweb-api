@@ -4,6 +4,7 @@
  */
 package com.pe.sh.Biblioapi.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import java.util.Set;
 
 /**
@@ -13,11 +14,22 @@ import java.util.Set;
 public class LibrosDto {
     
     private String codigolib;
+    
+    @NotEmpty(message = "El campo nombre no debe estar vacío")
     private String nombre;
+    
+    @NotEmpty(message = "El campo edicion no debe estar vacío")
     private String edicion;
+    
+    @NotEmpty(message = "El campo lugar_publicacion no debe estar vacío")
     private String lugar_publicacion;
+    
+    @NotEmpty(message = "El campo fech_publicacion no debe estar vacío")
     private String fech_publicacion;
+    
+    @NotEmpty(message = "El campo paginas no debe estar vacío")
     private String paginas;
+    
     private EditorialesDto codigoedi;
     private Set<AutoresDto> autores;
     private Set<GenerosDto> generos;

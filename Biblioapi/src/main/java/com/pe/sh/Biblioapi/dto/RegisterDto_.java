@@ -4,14 +4,23 @@
  */
 package com.pe.sh.Biblioapi.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+
 /**
  *
  * @author shmen
  */
 public class RegisterDto_ {
 
+    @NotEmpty(message = "El campo username no debe estar vacío")
     private String username;
+    
+    @NotEmpty(message = "El campo email no debe estar vacío")
+    @Email(message = "El campo email tiene una dirección de correo electrónico con formato INCORRECTO" ,regexp = "(?i)^(([^<>()[\\\\]\\.,;:\\s@\\\\\"]+(\\.[^<>()[\\\\]\\.,;:\\s@\\\\\"]+)*)|(\\\\\".+\\\\\"))@(([^<>()[\\\\]\\.,;:\\s@\\\\\"]+\\.)+[^<>()[\\\\]\\.,;:\\s@\\\\\"]{2,})$")
     private String email;
+    // dirección de correo electrónico con formato correcto 
+    @NotEmpty(message = "El campo password no debe estar vacío")
     private String password;
 
     public RegisterDto_() {

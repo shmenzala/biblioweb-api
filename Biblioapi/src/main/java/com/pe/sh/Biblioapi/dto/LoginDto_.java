@@ -4,13 +4,18 @@
  */
 package com.pe.sh.Biblioapi.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+
 /**
  *
  * @author shmen
  */
 public class LoginDto_ {
 
+    @NotEmpty(message = "El campo username no debe estar vacío")
     private String username;
+    
+    @NotEmpty(message = "El campo password no debe estar vacío")
     private String password;
 
     public LoginDto_() {

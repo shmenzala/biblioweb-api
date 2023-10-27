@@ -4,6 +4,8 @@
  */
 package com.pe.sh.Biblioapi.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+
 /**
  *
  * @author shmen
@@ -11,6 +13,8 @@ package com.pe.sh.Biblioapi.dto;
 public class EditorialesDto {
     
     private String codigoedi;
+    
+    @NotEmpty(message = "El campo nombre no debe estar vacío")
     private String nombre;
 
     public EditorialesDto() {

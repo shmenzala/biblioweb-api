@@ -4,6 +4,8 @@
  */
 package com.pe.sh.Biblioapi.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+
 /**
  *
  * @author shmen
@@ -11,10 +13,19 @@ package com.pe.sh.Biblioapi.dto;
 public class AutoresDto {
     
     private String codigoaut;
+    
+    @NotEmpty(message = "El campo nombres no debe estar vacío")
     private String nombres;
+    
+    @NotEmpty(message = "El campo apellidos no debe estar vacío")
     private String apellidos;
+    
+    @NotEmpty(message = "El campo fech_nacimiento no debe estar vacío")
     private String fech_nacimiento;
+    
     private String fotografia;
+    
+    @NotEmpty(message = "El campo extra_info no debe estar vacío")
     private String extra_info;
 
     public AutoresDto() {
