@@ -10,11 +10,9 @@ import java.util.Date;
  *
  * @author shmen
  */
-public class ErrorDetails {
+public class ErrorDetails extends ErrorFields{
     
-    private Date marcaDeTiempo;
     private String mensaje;
-    private String detalles;
 
     public ErrorDetails() {
     }
@@ -25,14 +23,6 @@ public class ErrorDetails {
         this.detalles = detalles;
     }
 
-    public Date getMarcaDeTiempo() {
-        return marcaDeTiempo;
-    }
-
-    public void setMarcaDeTiempo(Date marcaDeTiempo) {
-        this.marcaDeTiempo = marcaDeTiempo;
-    }
-
     public String getMensaje() {
         return mensaje;
     }
@@ -41,15 +31,4 @@ public class ErrorDetails {
         this.mensaje = mensaje;
     }
 
-    public String getDetalles() {
-        return detalles;
-    }
-
-    public void setDetalles(String detalles) {
-        this.detalles = detalles;
-    }
-
-    
-    
-    
 }
