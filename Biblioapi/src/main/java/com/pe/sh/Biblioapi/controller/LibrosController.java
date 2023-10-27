@@ -8,6 +8,7 @@ import com.pe.sh.Biblioapi.dto.LibrosDto;
 import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.LibrosService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class LibrosController {
 
     @PostMapping("/{codigoedi}")
     public ResponseEntity<LibrosDto> crearLibro(
-            @RequestBody LibrosDto libDto,
+            @Valid @RequestBody LibrosDto libDto,
             @PathVariable(value = "codigoedi") String codigoedi) {
         return new ResponseEntity<>(librosService.create(libDto, codigoedi), HttpStatus.CREATED);
     }
@@ -63,7 +64,7 @@ public class LibrosController {
     }
     
     @GetMapping("/cs/{coincidencia}")
-    public PageableDataDto buscarEditorialPorCoincidencia(
+    public PageableDataDto buscarLibroPorCoincidencia(
             @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
             @RequestParam(value = "sortBy", defaultValue = "codigolib", required = false) String orderBy,
@@ -74,7 +75,7 @@ public class LibrosController {
 
     @PutMapping("/{codigolib}/{codigoedi}")
     public ResponseEntity<LibrosDto> actualizarLibro(
-            @RequestBody LibrosDto libDto,
+            @Valid @RequestBody LibrosDto libDto,
             @PathVariable(value = "codigolib") String codigolib,
             @PathVariable(value = "codigoedi") String codigoedi) {
         return new ResponseEntity<>(librosService.update(libDto, codigolib, codigoedi), HttpStatus.OK);

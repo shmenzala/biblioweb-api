@@ -8,6 +8,7 @@ import com.pe.sh.Biblioapi.dto.GenerosDto;
 import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.GenerosService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class GenerosController {
 
     @PostMapping
     public ResponseEntity<GenerosDto> crearGenero(
-            @RequestBody GenerosDto genDto) {
+            @Valid @RequestBody GenerosDto genDto) {
         return new ResponseEntity<>(generosService.create(genDto), HttpStatus.OK);
     }
 
@@ -62,7 +63,7 @@ public class GenerosController {
     }
 
     @GetMapping("/cs/{coincidencia}")
-    public PageableDataDto buscarEditorialPorCoincidencia(
+    public PageableDataDto buscarGeneroPorCoincidencia(
             @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
             @RequestParam(value = "sortBy", defaultValue = "codigogen", required = false) String orderBy,
@@ -73,7 +74,7 @@ public class GenerosController {
     
     @PutMapping("/{codigogen}")
     public ResponseEntity<GenerosDto> actualizarGenero(
-            @RequestBody GenerosDto genDto,
+            @Valid @RequestBody GenerosDto genDto,
             @PathVariable(value = "codigogen") String codigogen) {
         return new ResponseEntity<>(generosService.update(genDto, codigogen), HttpStatus.OK);
     }

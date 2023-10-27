@@ -8,6 +8,7 @@ import com.pe.sh.Biblioapi.dto.EditorialesDto;
 import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.EditorialesService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class EditorialesController {
 
     @PostMapping
     public ResponseEntity<EditorialesDto> crearEditorial(
-            @RequestBody EditorialesDto ediDto) {
+            @Valid @RequestBody EditorialesDto ediDto) {
         return new ResponseEntity<>(editorialesService.create(ediDto), HttpStatus.CREATED);
     }
 
@@ -73,7 +74,7 @@ public class EditorialesController {
 
     @PutMapping("/{codigoedi}")
     public ResponseEntity<EditorialesDto> actualizarEditorial(
-            @RequestBody EditorialesDto ediDto,
+            @Valid @RequestBody EditorialesDto ediDto,
             @PathVariable(value = "codigoedi") String codigoedi) {
         return new ResponseEntity<>(editorialesService.update(ediDto, codigoedi), HttpStatus.OK);
     }

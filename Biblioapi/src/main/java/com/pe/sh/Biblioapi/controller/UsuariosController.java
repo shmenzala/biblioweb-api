@@ -8,6 +8,7 @@ import com.pe.sh.Biblioapi.dto.UsuariosDto;
 import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.UsuariosService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class UsuariosController {
     @PostMapping("/{codigorol}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UsuariosDto> crearUsuario(
-            @RequestBody UsuariosDto usuDto,
+            @Valid @RequestBody UsuariosDto usuDto,
             @PathVariable(value = "codigorol") String codigorol) {
         return new ResponseEntity<>(usuariosService.create(usuDto, codigorol), HttpStatus.CREATED);
     }
@@ -68,7 +69,8 @@ public class UsuariosController {
     }
 
     @GetMapping("/cs/{coincidencia}")
-    public PageableDataDto buscarEditorialPorCoincidencia(
+    @PreAuthorize("hasRole('ADMIN')")
+    public PageableDataDto buscarUsuarioPorCoincidencia(
             @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
             @RequestParam(value = "sortBy", defaultValue = "codigous", required = false) String orderBy,
@@ -80,7 +82,7 @@ public class UsuariosController {
     @PutMapping("/{codigous}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UsuariosDto> actualizarUsuario(
-            @RequestBody UsuariosDto usuDto,
+            @Valid @RequestBody UsuariosDto usuDto,
             @PathVariable(value = "codigous") String codigous) {
         return new ResponseEntity<>(usuariosService.update(usuDto, codigous), HttpStatus.OK);
     }

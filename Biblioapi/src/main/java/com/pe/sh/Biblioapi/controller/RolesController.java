@@ -8,6 +8,7 @@ import com.pe.sh.Biblioapi.dto.RolesDto;
 import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.RolesService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class RolesController {
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<RolesDto> crearRol(
-            @RequestBody RolesDto rolDto) {
+            @Valid @RequestBody RolesDto rolDto) {
         return new ResponseEntity<>(rolesService.create(rolDto), HttpStatus.OK);
     }
 
@@ -67,7 +68,8 @@ public class RolesController {
     }
     
     @GetMapping("/cs/{coincidencia}")
-    public PageableDataDto buscarEditorialPorCoincidencia(
+    @PreAuthorize("hasRole('ADMIN')")
+    public PageableDataDto buscarRolPorCoincidencia(
             @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
             @RequestParam(value = "sortBy", defaultValue = "codigorol", required = false) String orderBy,
@@ -79,7 +81,7 @@ public class RolesController {
     @PutMapping("/{codigorol}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<RolesDto> actualizarRol(
-            @RequestBody RolesDto rolDto,
+            @Valid @RequestBody RolesDto rolDto,
             @PathVariable(value = "codigorol") String codigorol) {
         return new ResponseEntity<>(rolesService.update(rolDto, codigorol), HttpStatus.OK);
     }

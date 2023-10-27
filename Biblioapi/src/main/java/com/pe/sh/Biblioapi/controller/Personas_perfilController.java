@@ -8,9 +8,11 @@ import com.pe.sh.Biblioapi.dto.Personas_perfilDto;
 import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.Personas_perfilService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,8 +38,9 @@ public class Personas_perfilController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Personas_perfilDto> crearPersona_perfil(
-            @RequestBody Personas_perfilDto pplDto) {
+            @Valid @RequestBody Personas_perfilDto pplDto) {
         return new ResponseEntity<>(personas_perfilService.create(pplDto), HttpStatus.OK);
     }
 
@@ -49,7 +52,7 @@ public class Personas_perfilController {
             @RequestParam(value = "sortDir", defaultValue = PageableValues.DEFAULT_ORDER_DIRECTION, required = false) String sortDir) {
         return personas_perfilService.findAllPagination(pageNo, pageSize, orderBy, sortDir);
     }
-    
+
     @GetMapping("/all")
     public List<Personas_perfilDto> listarPersonas_perfil() {
         return personas_perfilService.findAll();
@@ -60,9 +63,9 @@ public class Personas_perfilController {
             @PathVariable(value = "codigoppl") String codigoppl) {
         return ResponseEntity.ok(personas_perfilService.findById(codigoppl));
     }
-    
+
     @GetMapping("/cs/{coincidencia}")
-    public PageableDataDto buscarEditorialPorCoincidencia(
+    public PageableDataDto buscarPersona_perfilPorCoincidencia(
             @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
             @RequestParam(value = "sortBy", defaultValue = "codigope", required = false) String orderBy,
@@ -71,14 +74,15 @@ public class Personas_perfilController {
         return personas_perfilService.findAllWithCoincidence(coincidencia, pageNo, pageSize, orderBy, sortDir);
     }
 
-    @PutMapping("/{codigoppl}")
+    @PutMapping("/{codigous}")
     public ResponseEntity<Personas_perfilDto> actualizarPersona_perfil(
-            @RequestBody Personas_perfilDto pplDto,
-            @PathVariable(value = "codigoppl") String codigoppl) {
-        return new ResponseEntity<>(personas_perfilService.update(pplDto, codigoppl), HttpStatus.OK);
+            @Valid @RequestBody Personas_perfilDto pplDto,
+            @PathVariable(value = "codigous") String codigous) {
+        return new ResponseEntity<>(personas_perfilService.update(pplDto, codigous), HttpStatus.OK);
     }
 
     @DeleteMapping("/{codigoppl}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> eliminarPersona_perfil(
             @PathVariable(value = "codigoppl") String codigoppl) {
         personas_perfilService.delete(codigoppl);

@@ -8,6 +8,7 @@ import com.pe.sh.Biblioapi.dto.AutoresDto;
 import com.pe.sh.Biblioapi.pageable.PageableDataDto;
 import com.pe.sh.Biblioapi.pageable.PageableValues;
 import com.pe.sh.Biblioapi.service.AutoresService;
+import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class AutoresController {
 
     @PostMapping
     public ResponseEntity<AutoresDto> crearAutor(
-            @RequestBody AutoresDto autDto) {
+            @Valid @RequestBody AutoresDto autDto) {
         return new ResponseEntity<>(autoresService.create(autDto), HttpStatus.OK);
     }
 
@@ -62,7 +63,7 @@ public class AutoresController {
     }
         
     @GetMapping("/cs/{coincidencia}")
-    public PageableDataDto buscarEditorialPorCoincidencia(
+    public PageableDataDto buscarAutorPorCoincidencia(
             @RequestParam(value = "pageNo", defaultValue = PageableValues.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = PageableValues.DEFAULT_PAGE_SIZE, required = false) int pageSize,
             @RequestParam(value = "sortBy", defaultValue = "codigoaut", required = false) String orderBy,
@@ -73,7 +74,7 @@ public class AutoresController {
 
     @PutMapping("/{codigoaut}")
     public ResponseEntity<AutoresDto> actualizarAutor(
-            @RequestBody AutoresDto autDto,
+            @Valid @RequestBody AutoresDto autDto,
             @PathVariable(value = "codugoaut") String codigoaut) {
         return new ResponseEntity<>(autoresService.update(autDto, codigoaut), HttpStatus.OK);
     }

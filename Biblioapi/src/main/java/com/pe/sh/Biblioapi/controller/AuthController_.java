@@ -8,6 +8,7 @@ import com.pe.sh.Biblioapi.dto.JwtAuthResponseDto_;
 import com.pe.sh.Biblioapi.dto.LoginDto_;
 import com.pe.sh.Biblioapi.dto.RegisterDto_;
 import com.pe.sh.Biblioapi.service.AuthenticationService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,12 +30,12 @@ public class AuthController_ {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<JwtAuthResponseDto_> registerUser(@RequestBody RegisterDto_ regDto) {
+    public ResponseEntity<JwtAuthResponseDto_> registerUser(@Valid @RequestBody RegisterDto_ regDto) {
         return ResponseEntity.ok(authenticationService.register(regDto));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<JwtAuthResponseDto_> authenticateUser(@RequestBody LoginDto_ logDto) {
+    public ResponseEntity<JwtAuthResponseDto_> authenticateUser(@Valid @RequestBody LoginDto_ logDto) {
         return ResponseEntity.ok(authenticationService.authenticate(logDto));
     }
 
