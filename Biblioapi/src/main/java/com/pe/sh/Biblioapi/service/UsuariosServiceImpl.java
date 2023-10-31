@@ -6,6 +6,7 @@ package com.pe.sh.Biblioapi.service;
 
 import com.pe.sh.Biblioapi.configuration.Mapper;
 import com.pe.sh.Biblioapi.dto.UsuariosDto;
+import com.pe.sh.Biblioapi.exceptions.BiblioapiAppException;
 import com.pe.sh.Biblioapi.exceptions.ResourceNotFoundException;
 import com.pe.sh.Biblioapi.model.Libros;
 import com.pe.sh.Biblioapi.model.Personas_perfil;
@@ -25,6 +26,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 /**
@@ -75,26 +79,26 @@ public class UsuariosServiceImpl extends Mapper<Usuarios, UsuariosDto> implement
     }
 
     @Override
-    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir){
-        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+    public PageableDataDto findAllPagination(int pageNo, int pageSize, String orderBy, String sortDir) {
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(orderBy).ascending() : Sort.by(orderBy).descending();
         Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
-        
+
         Page<Usuarios> usuariosPage = usuariosRepository.findAll(pageable);
-        
+
         List<UsuariosDto> content = usuariosPage.getContent().stream().map(usuario -> toDto(usuario, UsuariosDto.class)).collect(Collectors.toList());
-        
+
         PageableDataDto usuariosResp = new PageableDataDto();
-        
+
         usuariosResp.setContent(content);
         usuariosResp.setPageNo(usuariosPage.getNumber());
         usuariosResp.setPageSize(usuariosPage.getSize());
         usuariosResp.setTotalElements(usuariosPage.getTotalElements());
         usuariosResp.setTotalPages(usuariosPage.getTotalPages());
         usuariosResp.setLast(usuariosPage.isLast());
-        
+
         return usuariosResp;
     }
-    
+
     @Override
     public List<UsuariosDto> findAll() {
         List<Usuarios> usuarios = usuariosRepository.findAll();
@@ -169,6 +173,22 @@ public class UsuariosServiceImpl extends Mapper<Usuarios, UsuariosDto> implement
     public UsuariosDto addLibrosFavoritos(String id, String codigolib) {
         Usuarios usuario = usuariosRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario", "id", id));
+
+        if (!usuariosRepository.existsByUsername(usuario.getUsername())) {
+            throw new BiblioapiAppException(HttpStatus.BAD_REQUEST, "Ese nombre de usuario no existe");
+        } else {
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (!(principal instanceof UserDetails)) {
+                throw new BiblioapiAppException(HttpStatus.BAD_REQUEST, "Usuario no proveniente del sistema");
+            } else {
+                String username = ((UserDetails) principal).getUsername();
+                System.out.println("USUARIO LOGUEADO: " + username);
+                if (!username.equals(usuario.getUsername())) {
+                    throw new BiblioapiAppException(HttpStatus.BAD_REQUEST, "Acceso denegado, no puedes modificar a este usuario");
+                }
+            }
+        }
+
         Libros libro = librosRepository.findById(codigolib)
                 .orElseThrow(() -> new ResourceNotFoundException("Libro", "id", codigolib));
 
@@ -186,6 +206,22 @@ public class UsuariosServiceImpl extends Mapper<Usuarios, UsuariosDto> implement
     public UsuariosDto removeLibrosFavoritos(String id, String codigolib) {
         Usuarios usuario = usuariosRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario", "id", id));
+        
+        if (!usuariosRepository.existsByUsername(usuario.getUsername())) {
+            throw new BiblioapiAppException(HttpStatus.BAD_REQUEST, "Ese nombre de usuario no existe");
+        } else {
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (!(principal instanceof UserDetails)) {
+                throw new BiblioapiAppException(HttpStatus.BAD_REQUEST, "Usuario no proveniente del sistema");
+            } else {
+                String username = ((UserDetails) principal).getUsername();
+                System.out.println("USUARIO LOGUEADO: " + username);
+                if (!username.equals(usuario.getUsername())) {
+                    throw new BiblioapiAppException(HttpStatus.BAD_REQUEST, "Acceso denegado, no puedes modificar a este usuario");
+                }
+            }
+        }
+        
         Libros libro = librosRepository.findById(codigolib)
                 .orElseThrow(() -> new ResourceNotFoundException("Libro", "id", codigolib));
 
@@ -206,22 +242,22 @@ public class UsuariosServiceImpl extends Mapper<Usuarios, UsuariosDto> implement
 
     @Override
     public PageableDataDto findAllWithCoincidence(String search, int pageNo, int pageSize, String orderBy, String sortDir) {
-        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name())?Sort.by(orderBy).ascending():Sort.by(orderBy).descending();
+        Sort sort = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(orderBy).ascending() : Sort.by(orderBy).descending();
         Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
-        
+
         Page<Usuarios> usuariosPage = usuariosRepository.buscarUsuariosPorCoincidencia(search, pageable);
-        
+
         List<UsuariosDto> content = usuariosPage.getContent().stream().map(usuario -> toDto(usuario, UsuariosDto.class)).collect(Collectors.toList());
-        
+
         PageableDataDto usuariosResp = new PageableDataDto();
-        
+
         usuariosResp.setContent(content);
         usuariosResp.setPageNo(usuariosPage.getNumber());
         usuariosResp.setPageSize(usuariosPage.getSize());
         usuariosResp.setTotalElements(usuariosPage.getTotalElements());
         usuariosResp.setTotalPages(usuariosPage.getTotalPages());
         usuariosResp.setLast(usuariosPage.isLast());
-        
+
         return usuariosResp;
     }
 

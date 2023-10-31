@@ -113,7 +113,6 @@ public class UsuariosController {
     }
 
     @PutMapping("/{codigous}/addLib/{codigolib}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UsuariosDto> asignarLibrosFavAlUsuario(
             @PathVariable(value = "codigous") String codigous,
             @PathVariable(value = "codigolib") String codigolib) {
@@ -121,7 +120,6 @@ public class UsuariosController {
     }
 
     @PutMapping("/{codigous}/removeLib/{codigolib}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UsuariosDto> removerLibrosFavAlUsuario(
             @PathVariable(value = "codigous") String codigous,
             @PathVariable(value = "codigolib") String codigolib) {
