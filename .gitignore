@@ -1,2 +1,2 @@
 ignored.txt
-Biblioapi/src/main/resources/application.properties
+Biblioapi/src/main/resources/secrets.properties
