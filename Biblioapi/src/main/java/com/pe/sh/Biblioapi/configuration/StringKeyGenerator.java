@@ -23,11 +23,11 @@ import org.hibernate.type.Type;
  *
  * @author shmen
  */
-public class StringKeyGenerator implements IdentifierGenerator, Configurable{
+public class StringKeyGenerator implements IdentifierGenerator, Configurable {
 
     private String sqcName = "";
     private String identificator_id = "";
-    
+
     @Override
     public Object generate(SharedSessionContractImplementor ssci, Object o) throws HibernateException {
         Connection connection = null;
@@ -42,7 +42,7 @@ public class StringKeyGenerator implements IdentifierGenerator, Configurable{
 
         try {
             // Oracle-specific code to query a sequence
-            ps = connection.prepareStatement("SELECT " + sqcName + ".nextval AS VAL_PK FROM dual");
+            ps = connection.prepareStatement("SELECT next_val AS VAL_PK FROM " + sqcName);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -50,9 +50,13 @@ public class StringKeyGenerator implements IdentifierGenerator, Configurable{
 
                 // Convert to a String
                 result = identificator_id + Integer.toString(pk);
+
+                ps = connection.prepareStatement("UPDATE " + sqcName + " SET next_val = next_val + 1");
+                ps.executeUpdate();
             }
+
         } catch (SQLException e) {
-            throw new HibernateException("No se puede generar la Primary Key.");
+            throw new HibernateException("No se puede generar la Primary Key. " + e);
         } finally {
             if (ps != null) {
                 try {
@@ -64,7 +68,7 @@ public class StringKeyGenerator implements IdentifierGenerator, Configurable{
         }
         return result;
     }
-    
+
     @Override
     public void configure(Type type, Properties prprts, ServiceRegistry sr) throws MappingException {
         sqcName = prprts.getProperty("sqcName");
