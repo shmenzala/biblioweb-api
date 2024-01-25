@@ -29,7 +29,6 @@ public class Personas_perfil implements Serializable{
     @GenericGenerator(name = "inc_seqPpl", type = StringKeyGenerator.class,
             parameters = {@Parameter(name = "sqcName", value = "PERSONAS_PERFIL_SEQ"),
                           @Parameter(name = "identificator_id", value = "PP")})
-    @SequenceGenerator(name = "inc_seqPpl", sequenceName = "PERSONAS_PERFIL_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "nombres")

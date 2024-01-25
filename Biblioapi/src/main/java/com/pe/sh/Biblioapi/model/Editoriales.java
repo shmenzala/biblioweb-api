@@ -34,7 +34,6 @@ public class Editoriales implements Serializable{
     @GenericGenerator(name = "inc_seqEdi", type = StringKeyGenerator.class,
             parameters = {@Parameter(name = "sqcName", value = "EDITORIALES_SEQ"),
                           @Parameter(name = "identificator_id", value = "ED")})
-    @SequenceGenerator(name = "inc_seqEdi", sequenceName = "EDITORIALES_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "nombre")

@@ -33,7 +33,6 @@ public class Generos implements Serializable{
     @GenericGenerator(name = "inc_seqGen", type = StringKeyGenerator.class,
             parameters = {@Parameter(name = "sqcName", value = "GENEROS_SEQ"),
                           @Parameter(name = "identificator_id", value = "GE")})
-    @SequenceGenerator(name = "inc_seqGen", sequenceName = "GENEROS_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "nombre")

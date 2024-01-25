@@ -33,7 +33,6 @@ public class Roles implements Serializable{
     @GenericGenerator(name = "inc_seqRol", type = StringKeyGenerator.class,
             parameters = {@Parameter(name = "sqcName", value = "ROLES_SEQ"),
                           @Parameter(name = "identificator_id", value = "RL")})
-    @SequenceGenerator(name = "inc_seqRol", sequenceName = "ROLES_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "nombre")

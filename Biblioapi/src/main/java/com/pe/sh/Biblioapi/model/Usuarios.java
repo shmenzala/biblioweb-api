@@ -41,8 +41,7 @@ public class Usuarios implements Serializable, UserDetails{
     @GeneratedValue(generator = "inc_seqUsu")
     @GenericGenerator(name = "inc_seqUsu", type = StringKeyGenerator.class,
             parameters = {@Parameter(name = "sqcName", value = "USUARIOS_SEQ"),
-                          @Parameter(name = "identificator_id", value = "US")})
-    @SequenceGenerator(name = "inc_seqUsu", sequenceName = "USUARIOS_SEQ", initialValue = 1, allocationSize = 1)
+                          @Parameter(name = "identificator_id", value = "US")})    
     private String id;
     
     @Column(name = "username")

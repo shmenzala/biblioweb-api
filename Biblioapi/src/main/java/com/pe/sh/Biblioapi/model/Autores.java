@@ -9,9 +9,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -33,7 +33,6 @@ public class Autores implements Serializable{
     @GenericGenerator(name = "inc_seqAut", type = StringKeyGenerator.class,
             parameters = {@Parameter(name = "sqcName", value = "AUTORES_SEQ"),
                           @Parameter(name = "identificator_id", value = "AU")})
-    @SequenceGenerator(name = "inc_seqAut", sequenceName = "AUTORES_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "nombres")

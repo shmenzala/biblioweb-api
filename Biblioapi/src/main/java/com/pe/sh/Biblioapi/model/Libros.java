@@ -38,7 +38,6 @@ public class Libros implements Serializable{
     @GenericGenerator(name = "inc_seqLib", type = StringKeyGenerator.class,
             parameters = {@Parameter(name = "sqcName", value = "LIBROS_SEQ"),
                           @Parameter(name = "identificator_id", value = "LI")})
-    @SequenceGenerator(name = "inc_seqLib", sequenceName = "LIBROS_SEQ", initialValue = 1, allocationSize = 1)
     private String id;
     
     @Column(name = "nombre")
