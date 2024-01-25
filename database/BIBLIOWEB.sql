@@ -126,4 +126,82 @@ CREATE SEQUENCE PERSONAS_PERFIL_SEQ START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE ROLES_SEQ START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE USUARIOS_SEQ START WITH 1 INCREMENT BY 1 NOCACHE;
 
+select * from roles;
+
+select * from usuarios;
+select * from personas_perfil;
+select * from usuarios_roles;
+select * from favoritos_libper;
+
+select * from libros;
+select * from editoriales;
+select * from autores;
+select * from generos;
+
+select * from libros_autores;
+select * from libros_generos;
+
+select * from autores where upper(codigoaut) like upper('%aut%') or upper(nombres) like upper('%aut%') or upper(apellidos) like upper('%aut%') or upper(fech_nacimiento) like upper('%aut%');
+select * from Generos where upper(codigogen) like upper('%sts1%') or upper(nombre) like upper('%st1%');
+select * from Libros where upper(codigolib) like upper('%li%') or upper(nombre) like upper('%li%') or upper(edicion) like upper('%li%') or upper(lugar_publicacion) like upper('%li%') or upper(fech_publicacion) like upper('%li%') or upper(paginas) like upper('%li%');
+select * from Personas_perfil where upper(codigope) like upper('%3%') or upper(nombres) like upper('%3%') or upper(apellidos) like upper('%3%') or upper(genero) like upper('%3%') or upper(fech_nacimiento) like upper('%3%');
+select * from Roles where upper(codigorol) like upper('%us%') or upper(nombre) like upper('%us%');
+
+select * from usuarios where upper(codigous) like upper('%us%') or upper(username) like upper('%us%') or upper(email) like upper('%us%');
+
+select l.*, a.NOMBRES from libros l
+inner join libros_autores lb on l.codigolib = lb.codigolib
+inner join autores a on lb.codigoaut = a.codigoaut
+where upper(l.codigolib) like upper('%3 nom%') or upper(l.nombre) like upper('%3 nom%') or upper(a.nombres) like upper ('%3 nom%');
+
+select count(*) from libros l
+inner join libros_autores lb on l.codigolib = lb.codigolib
+inner join autores a on lb.codigoaut = a.codigoaut
+where upper(l.codigolib) like upper('%3 nom%') or upper(l.nombre) like upper('%3 nom%') or upper(a.nombres) like upper ('%3 nom%');
+
+select e.* from editoriales e where UPPER(e.codigoedi) like UPPER('%pens%') OR UPPER(e.nombre) like UPPER('%pens%');
+select count(e.*) from editoriales e where upper(e.codigoedi) like upper('%pens%') or upper(e.nombre) like upper('%pens%');
+
+
+
+select e.codigoedi as id, e.nombre as nombre from Editoriales e where upper(e.codigoedi) like upper('%'||?||'%') or upper(e.nombre) like upper('%'||?||'%') order by e.codigoedi asc;
+
+select
+        * 
+    from
+        (select
+            e.codigoedi as id,
+            e.nombre as nombre 
+        from
+            Editoriales e 
+        where
+            upper(e.codigoedi) like upper('%pens%') 
+            or upper(e.nombre) like upper('%pens%') 
+        order by
+            id asc) 
+    where
+        rownum<=?;
+
+select
+        *
+    from
+        (select
+            e1_0.codigoedi c0,
+            e1_0.nombre c1,
+            row_number() over(
+        order by
+            e1_0.codigoedi) rn 
+        from
+            editoriales e1_0 
+        where
+            upper(e1_0.codigoedi) like upper('%pens%') escape '\' 
+            or upper(e1_0.nombre) like upper('%pens%') escape '\') r_0_ 
+    where
+        r_0_.rn<=?+?
+        and r_0_.rn>?
+    order by
+        r_0_.rn;
+
+--SELECT * FROM RESERVAS WHERE (FECH_ENTRADA) LIKE ('%27%') OR (FECH_SALIDA) LIKE ('%27%') OR (VALOR) LIKE ('%27%') OR UPPER(FORMAPAGO) LIKE UPPER ('%27%');
+
 COMMIT;
